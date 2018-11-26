@@ -1,0 +1,409 @@
+
+option java_package = "com.quxiang.game.commons.protocol";
+ 
+package game_protocol;
+
+
+
+//request
+//|int|int|content|
+ //  1  2     3
+
+ //1: 长度
+ //2: 包头
+ //3：内容
+
+
+message ProtocolMessage{
+      
+    optional EnterGame nterGame=1;
+    
+    optional EnterGameResult enterGameResult=2;
+
+    optional NoticeOtherUserEnter noticeOtherUserEnter=3;
+
+    optional SpinGame spinGame=4;
+
+    optional SpinGameResult spinGameResult=5;
+
+    optional NoticeOtherUserWin noticeOtherUserWin=6;
+
+    optional ExitGame exitGame=7;
+
+    optional NoticeUserExitGame noticeUserExitGame=8;
+
+    optional GetUserInfo getUserInfo=9;
+
+    optional RetUserInfo retUserInfo=10;
+
+    optional int32 header=11;
+
+}
+
+
+
+
+
+//进入游戏服
+//包头1951
+message EnterGame{
+     //用户ID
+    optional int64 user_id=1;
+    //用户名称
+    optional string user_name=2;
+    //主题ID
+    optional int32 theme_id=3;
+    //主题名称
+    optional string theme_name=4;
+    //语言类型 4  1：英文，2：中文
+    optional int32 language_type=5;
+    
+}
+
+//进入游戏返回桌子上的用户
+//包头1952
+message EnterGameResult{
+     //用户ID
+    optional int64 user_id=1;
+    //用户金币
+    optional float count_gold=2;
+    //上次免费次数
+    optional int32 free_times=3;
+    //主题ID
+    optional int32 theme_id=4;
+    //最后一次bet
+    optional float last_bet=5;
+    //最后一次倍数
+    optional int32 last_mul=6;
+    //自己的座位号
+    optional int32 seat=7;
+    //桌子上的用户信息
+    message TableUser {
+        optional int64 user_id = 1;
+        optional string user_name = 2;
+        optional float gold_count = 3;
+        optional int32 seat_num = 4;
+        optional int32 sex = 5;
+        optional int32 head_icon_id=6;
+        
+    }
+    //桌子上的用户列表
+    repeated TableUser table_users=8;
+
+    //倍率
+    optional string bets=9;
+    //倍数
+    optional string mul=10;
+    //每条线的金额
+    optional float a_line_bet=11;
+    //线的数量
+    optional int32 line_num=12;
+     //奖励列表
+    repeated string award_list=13;
+    
+
+
+}
+
+    
+
+//通知其他用户谁进入桌子
+//包头1953
+message NoticeOtherUserEnter{
+     //用户ID
+    optional int64 user_id=1;
+    //用户名
+    optional string name=2;
+    //携带多少金币
+    optional float gold_count=3;
+    //座位号
+    optional int32 seat_num=4;
+    //性别
+    optional int32 sex=5;
+    //头像
+    optional int32 head_icon_id=6;
+
+}
+
+
+//旋转游戏
+//包头1954
+message SpinGame{
+     //用户ID
+    optional int64 user_id=1;
+    //旋转类型0：普通，1：免费，2：GM赠送免费，3：单轴旋转
+    optional int32 spin_type=2;
+    //倍率
+    optional float bet=3;
+    //倍数
+    optional int32 multiple=4;
+    //线数
+    optional int32 line_count=5;
+    //活动ID
+    optional int32 activity_id=6;
+    //powerpay，预留参数
+    //五龙争霸  0-25   1-30
+    optional bool is_power=7;
+    //预留参数
+    //宝石迷阵 单轴旋转0,1,2,3,4
+    optional string param=8;
+    
+}
+
+
+//返回旋转结果
+//包头1955
+//每条线的描述规则
+//1：第几条线，2：中奖金额，3：线的坐标，4：图标数量，5：wild标识（0无，1：有）6：第几个图标, 7:左右中奖情况（0,1），1中奖，0未中奖
+//[15:5:[3, 2, 3, 2, 3]:3:0:2:[0,0]]
+message SpinGameResult{
+     //用户ID
+    optional int64 user_id=1;
+     //用户总金币
+    optional float count_gold=2;
+    //矩阵
+    optional string wheel_array=3;
+    //赢了多少
+    optional float win_gold=4;
+    // 是否中sactter
+    optional bool sactter=5;
+    // 是否中bonus
+    optional bool bonus=6;
+    //旋转结果
+    repeated string spin_res=7;
+    //预留参数
+    //外星人，5,6,7,8
+    //小门神 0.5,10,3
+    //运财神龙，中scatter
+    optional string pram=8;
+    //免费游戏倍数
+    //小门神 2,3,4,5
+    optional int32 free_mul=9;
+    
+
+}
+
+
+
+
+//通知其他用户获得多少金币
+//包头1956
+message NoticeOtherUserWin{
+     //用户ID
+    optional int64 user_id=1;
+     //总投注
+    optional float toltal_bet=2;
+    //总金币
+    optional float gold_count=3;
+    //赢了多少
+    optional float win_gold=4;
+    //座位号
+    optional int32 seat_num=5;
+		//头像
+    optional int32 head_icon_id=6;
+}
+
+
+//243返回旋转结果
+//包头1965
+message TFTSpinGameResult{
+     //用户ID
+    optional int64 user_id=1;
+     //用户总金币
+    optional float count_gold=2;
+    //旋转结果
+    repeated SpinResult spin_res=3;
+    //赢了多少
+    optional float win_count=4;
+    //是否随机游戏
+    //冰球随机WILD
+    optional bool is_smashing=5;
+    //冰球随机WILD列索引列表，篮球明星会出现随机2列WILD
+    repeated int32 smashing_reel_index=6;
+    //是否中sactter
+    optional bool sactter=7;
+    //是否中bonus
+    optional bool is_bonus=8;
+    // bonus信息 A：剑，B：戟
+    //[2.0, 2.0, B, 2.0, 2.0, B, A, 2.0, 2.0, A, B, 2.0, 2.0, 2.0, B, 2.0, A, A, A, B, B, 2.0, 2.0, A]
+    optional string bonus=9;
+    //小游戏 倍数列表
+    //[1,1,2,3]
+    optional string bonus_game_mul=10;
+    //免费次数
+    optional int32 free_times=11;
+}
+
+//243每次旋转结果
+message SpinResult{
+     //用户ID
+    optional int64 user_id=1;
+     //旋转类型，0：正常，1：免费
+    optional int32 spin_type=2;
+     //矩阵
+    repeated Reel matrix=3;
+     //赢了多少
+    optional float win_gold=4;
+    //消除的索引,大闹天宫中代表中奖的索引
+    repeated RmReelIndex rm_index=5;
+    //旋转结果,大闹天宫类
+    //[15:5:[3, 2, 3, 2, 3]:3:0:2:[0,0]]
+    repeated string spin_res=6;
+    //免费游戏倍数索引
+    optional int32 free_mul_index=7;
+    //免费游戏消除倍数（冰球），大闹天宫免费游戏随机倍数
+    optional int32 rm_mul=8;
+     //单轴需要的金额
+    repeated float reel_gold=9;
+
+}
+
+
+//243 Reel 一列
+message Reel{
+     //reel列码
+    optional int32 reel_num=1;
+     //图标数组
+    repeated int32 reel_symble=2;
+
+}
+
+
+//243 消除的索引
+message RmReelIndex{
+     //reel列码
+    optional int32 reel_num=1;
+      //索引数组[0,2] [0,1]
+    repeated int32 reel_index=2;
+
+}
+
+
+
+//bonusGame请求
+//包头1966
+message BonusGameReq{
+     //用户ID
+    optional int64 user_id=1;
+    //bonus游戏结果索引
+    //城堡0,2,6,12,20
+    //外星人索引1
+    //吸血鬼索引1
+    //五龙索引1
+    optional string bonus_indexs=2;
+    //bonus游戏倍率索引
+    optional int32 bonus_mul_indexs=3;
+    //哪方胜利 1:红方，2：蓝方
+    optional int32 bonus_victory=4;
+
+}
+
+//返回bonus结果, 红方胜奖励免费次数；蓝方胜，奖励翻倍。
+//包头1967
+message BonusGameRes{
+     //用户ID
+    optional int64 user_id=1;
+    //bonus游戏奖励金币
+    optional float award_gold=2;
+    //bonus游戏倍率
+    optional int32 bonus_mul=3;
+    //bonus免费游戏次数
+    optional int32 free_game_times=4;
+    //哪方胜利 1:红方，2：蓝方
+    optional int32 bonus_victory=5;
+    //用户总金币
+    optional float count_gold=6;
+}
+
+//退出游戏
+//包头1957
+message ExitGame{
+     //用户ID
+    optional int64 user_id=1;
+    //座位号
+    optional int32 seat_num=2;
+
+}
+
+//通知其他用户谁退出游戏
+//包头1958
+message NoticeUserExitGame{
+     //用户ID
+    optional int64 user_id=1;
+    //座位号
+    optional int32 seat_num=2;
+
+}
+
+//已满没有空位
+//包头1959
+message SeatIsFull{
+    //通知消息
+    optional string notice_msg=1;
+}
+
+//返回一般错误消息
+//包头1960
+message SystemMessage{
+    //内容  重复登录！  不在投注范围内！ 筹码不够！
+    optional string content=1;
+    //显示颜色
+    optional int32 color=2;
+    //消息显示类型 1：普通消息，2：重要消息，3：错误提示消息，4：登陆错误消息，5：弹框消息，6：延迟消息
+    optional int32 showType=3;
+}
+
+//获取玩家金币数量
+//包头1961
+message GetUserInfo{
+     //用户ID
+    optional int64 user_id=1;
+}
+
+//返回玩家金币数量
+//包头1962
+message RetUserInfo{
+     //用户ID
+    optional int64 user_id=1;
+    //
+    optional float gold=2;
+}
+
+
+//心跳
+//包头1963
+message Heartbeat{}
+//心跳返回
+//包头1964
+message HeartbeatRet{}
+
+//单条线旋转
+//包头2000
+message SpinOneLine{
+     //用户ID
+    optional int64 user_id=1;
+    //
+    optional float gold=2;
+}
+
+//推送BIG WIN消息
+//包头3000
+message NoticeBigWinMsg{
+    //消息内容
+    optional string msg_content=1;
+    //消息级别(1：低，2：中，3：高)
+    optional int32 msg_lev=2;
+    //循环次数
+    optional int32 for_times=3;
+    //用户ID
+    optional string account_id=4;
+    //游戏ID
+    optional int32 game_id=5;
+    //游戏名称
+    optional string game_name=6;
+    //游戏币
+    optional float count_gold=7;
+    
+    optional int32 head_icon_id=8;
+
+}

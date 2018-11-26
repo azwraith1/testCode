@@ -1,0 +1,14 @@
+{"file":"tiangong_btn.png","frames":{
+"bt_4":{"x":1,"y":49,"w":80,"h":77,"offX":0,"offY":0,"sourceW":80,"sourceH":77},
+"bt_4_1":{"x":396,"y":1,"w":80,"h":77,"offX":0,"offY":0,"sourceW":80,"sourceH":77},
+"bt_1":{"x":139,"y":49,"w":54,"h":54,"offX":0,"offY":0,"sourceW":54,"sourceH":54},
+"bt_1_1":{"x":83,"y":49,"w":54,"h":54,"offX":0,"offY":0,"sourceW":54,"sourceH":54},
+"bt_3":{"x":450,"y":80,"w":52,"h":52,"offX":0,"offY":0,"sourceW":52,"sourceH":52},
+"bt_3_1":{"x":396,"y":80,"w":52,"h":52,"offX":0,"offY":0,"sourceW":52,"sourceH":52},
+"bt_5":{"x":236,"y":93,"w":39,"h":42,"offX":0,"offY":0,"sourceW":39,"sourceH":42},
+"bt_5_1":{"x":195,"y":93,"w":39,"h":42,"offX":0,"offY":0,"sourceW":39,"sourceH":42},
+"bt_6":{"x":318,"y":93,"w":39,"h":42,"offX":0,"offY":0,"sourceW":39,"sourceH":42},
+"bt_6_1":{"x":277,"y":93,"w":39,"h":42,"offX":0,"offY":0,"sourceW":39,"sourceH":42},
+"bt_7":{"x":301,"y":1,"w":93,"h":90,"offX":0,"offY":0,"sourceW":93,"sourceH":90},
+"bt_7_1":{"x":206,"y":1,"w":93,"h":90,"offX":0,"offY":0,"sourceW":93,"sourceH":90},
+"title_2":{"x":1,"y":1,"w":203,"h":46,"offX":0,"offY":0,"sourceW":203,"sourceH":46}}}

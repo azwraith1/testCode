@@ -1,0 +1,951 @@
+{
+	"groups": [
+		{
+			"keys": "loadingbar1_png,loadingbar2_png,loadinglogo_png,loadingtext_png,btn_png,btn_json,img_main_wheel_png,img_base_bg_jpg,img_fg_bg_jpg,XIYOUJI__1_png,XIYOUJI_2_png,icon_json,test_tex_json,test_tex_png,test_ske_json,wild_ske_json,wild_tex_json,wild_tex_png,12_png,13_png,1_png,kuang_png,icon_3_json,0_png,14_png,189_png,2_png,218_png,3_png,4_png,5_png,6_png,7_png,8_png,9_png,mokey_1_jpg,mokey_2_png,mokey_3_png,mokey_4_png,mokey_5_png,mokey_6_png,im_6_png,loading_png,bg_01_jpg,tiangong_png,bg_color_png,cloud_1_png,cloud_2_png,cloud_3_png,cloud_4_png,cloud_5_png,ba_png,operating_png,by2_png,bg_1_png,bg1_fw_png,peach_png,line_png,big_bang_png,loading_bg_png,pay_3_1_png,pay_1_png,pay_2_png,pay_2_1_png,pay_3_png,pay _bt_1_png,pay _bt_1_1_png,04_png,07_png,cloud3_png,tiangong_btn_json,peach_tex_json,peach_tex_png,temp3_proto",
+			"name": "preload"
+		},
+		{
+			"keys": "ziji_dachupai_1_big_png,ziji_dachupai_2_big_png,ziji_dachupai_3_big_png,ziji_dachupai_4_big_png,ziji_shoupai_big_png,img_cardvalue21_png,img_cardvalue22_png,img_cardvalue23_png,img_cardvalue24_png,img_cardvalue25_png,img_cardvalue26_png,img_cardvalue27_png,img_cardvalue28_png,img_cardvalue29_png,img_cardvalue1_png,img_cardvalue2_png,img_cardvalue3_png,img_cardvalue4_png,img_cardvalue5_png,img_cardvalue6_png,img_cardvalue7_png,img_cardvalue8_png,img_cardvalue9_png,img_cardvalue11_png,img_cardvalue12_png,img_cardvalue13_png,img_cardvalue14_png,img_cardvalue15_png,img_cardvalue16_png,img_cardvalue17_png,img_cardvalue18_png,img_cardvalue19_png,mj_bg_png,mj_dir_db_png,mj_dir_db1_png,mj_dir_light_4_png,mj_dir_light_1_png,mj_dir_light_2_png,mj_dir_light_3_png,zuojia_shupai_6_big_png,zuojia_shupai_7_big_png,zuojia_shupai_8_big_png,zuojia_shupai_9_big_png,zuojia_shupai_10_big_png,zuojia_shupai_11_big_png,zuojia_shupai_12_big_png,zuojia_shupai_13_big_png,zuojia_shupai_14_big_png,zuojia_shupai_1_big_png,zuojia_shupai_2_big_png,zuojia_shupai_3_big_png,zuojia_shupai_4_big_png,zuojia_shupai_5_big_png,font_sypai_fnt,font_timer_fnt,font_direction_fnt,header1_png,header2_png,header3_png,header4_png,beijingtu_png,mj_btn_1_png,mj_btn_back_png,mj_btn_bg9_png,mj_btn_fdsx_png,mj_btn_more_png,mj_btn_s_png,mj_btn_sz_png,mj_btn_wenhao_png,mj_dz_png,mj_jqqd_png,mj_money_png,mj_scmj_bg_png,mj_select1_bg_png,mj_select2_bg_png,mj_select3_bg_png,mj_select4_bg_png,mj_select6_bg_png,mj_select_bg_png,mj_wanfa_bg_png,mj_xc_1_png,mj_xc_2_png,mj_xc_3_png,mj_xc_4_png,mj_xc_bg_png,mj_xlch_bg_png,mj_xlch_bg1_png,boy_1_png,boy_2_png,boy_3_png,girl_1_png,girl_2_png,girl_3_png,mj_xc_number2_fnt,shuzi_fnt,shangjia_shupai_1_big_png,shangjia_shupai_2_big_png,shangjia_shupai_3_big_png,shangjia_shupai_4_big_png,shangjia_shupai_5_big_png,shangjia_shupai_6_big_png,shangjia_shupai_7_big_png,shangjia_shupai_8_big_png,shangjia_shupai_9_big_png,shangjia_shupai_10_big_png,shangjia_shupai_11_big_png,shangjia_shupai_12_big_png,shangjia_shupai_13_big_png,shangjia_shupai_14_big_png",
+			"name": "big"
+		},
+		{
+			"keys": "XIYOUJI_2_png,img_main_wheel_png,img_fg_bg_jpg,img_base_bg_jpg",
+			"name": "laohuji"
+		},
+		{
+			"keys": "temp3_proto,temp2_proto",
+			"name": "proto_core"
+		}
+	],
+	"resources": [
+		{
+			"url": "gameAssets/preloading/loadingbar1.png",
+			"type": "image",
+			"name": "loadingbar1_png"
+		},
+		{
+			"url": "gameAssets/preloading/loadingbar2.png",
+			"type": "image",
+			"name": "loadingbar2_png"
+		},
+		{
+			"url": "gameAssets/preloading/loadinglogo.png",
+			"type": "image",
+			"name": "loadinglogo_png"
+		},
+		{
+			"url": "gameAssets/preloading/loadingtext.png",
+			"type": "image",
+			"name": "loadingtext_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/ziji_dachupai_1_big.png",
+			"type": "image",
+			"name": "ziji_dachupai_1_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/ziji_dachupai_2_big.png",
+			"type": "image",
+			"name": "ziji_dachupai_2_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/ziji_dachupai_3_big.png",
+			"type": "image",
+			"name": "ziji_dachupai_3_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/ziji_dachupai_4_big.png",
+			"type": "image",
+			"name": "ziji_dachupai_4_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/ziji_shoupai_big.png",
+			"type": "image",
+			"name": "ziji_shoupai_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue21.png",
+			"type": "image",
+			"name": "img_cardvalue21_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue22.png",
+			"type": "image",
+			"name": "img_cardvalue22_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue23.png",
+			"type": "image",
+			"name": "img_cardvalue23_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue24.png",
+			"type": "image",
+			"name": "img_cardvalue24_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue25.png",
+			"type": "image",
+			"name": "img_cardvalue25_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue26.png",
+			"type": "image",
+			"name": "img_cardvalue26_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue27.png",
+			"type": "image",
+			"name": "img_cardvalue27_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue28.png",
+			"type": "image",
+			"name": "img_cardvalue28_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue29.png",
+			"type": "image",
+			"name": "img_cardvalue29_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue1.png",
+			"type": "image",
+			"name": "img_cardvalue1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue2.png",
+			"type": "image",
+			"name": "img_cardvalue2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue3.png",
+			"type": "image",
+			"name": "img_cardvalue3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue4.png",
+			"type": "image",
+			"name": "img_cardvalue4_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue5.png",
+			"type": "image",
+			"name": "img_cardvalue5_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue6.png",
+			"type": "image",
+			"name": "img_cardvalue6_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue7.png",
+			"type": "image",
+			"name": "img_cardvalue7_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue8.png",
+			"type": "image",
+			"name": "img_cardvalue8_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue9.png",
+			"type": "image",
+			"name": "img_cardvalue9_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue11.png",
+			"type": "image",
+			"name": "img_cardvalue11_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue12.png",
+			"type": "image",
+			"name": "img_cardvalue12_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue13.png",
+			"type": "image",
+			"name": "img_cardvalue13_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue14.png",
+			"type": "image",
+			"name": "img_cardvalue14_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue15.png",
+			"type": "image",
+			"name": "img_cardvalue15_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue16.png",
+			"type": "image",
+			"name": "img_cardvalue16_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue17.png",
+			"type": "image",
+			"name": "img_cardvalue17_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue18.png",
+			"type": "image",
+			"name": "img_cardvalue18_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/ziji/img_cardvalue19.png",
+			"type": "image",
+			"name": "img_cardvalue19_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_bg.png",
+			"type": "image",
+			"name": "mj_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/font/font_sypai.fnt",
+			"type": "font",
+			"name": "font_sypai_fnt"
+		},
+		{
+			"url": "gameAssets/afterloading/font/font_timer.fnt",
+			"type": "font",
+			"name": "font_timer_fnt"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_db.png",
+			"type": "image",
+			"name": "mj_dir_db_png"
+		},
+		{
+			"url": "gameAssets/afterloading/font/font_direction.fnt",
+			"type": "font",
+			"name": "font_direction_fnt"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_db1.png",
+			"type": "image",
+			"name": "mj_dir_db1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_light_4.png",
+			"type": "image",
+			"name": "mj_dir_light_4_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_light_1.png",
+			"type": "image",
+			"name": "mj_dir_light_1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_light_2.png",
+			"type": "image",
+			"name": "mj_dir_light_2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/mj_dir_light_3.png",
+			"type": "image",
+			"name": "mj_dir_light_3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_6_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_6_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_7_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_7_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_8_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_8_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_9_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_9_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_10_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_10_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_11_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_11_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_12_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_12_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_13_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_13_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_14_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_14_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_1_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_1_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_2_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_2_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_3_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_3_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_4_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_4_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/left/zuojia_shupai_5_big.png",
+			"type": "image",
+			"name": "zuojia_shupai_5_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/headers/header1.png",
+			"type": "image",
+			"name": "header1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/headers/header2.png",
+			"type": "image",
+			"name": "header2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/headers/header3.png",
+			"type": "image",
+			"name": "header3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/common/headers/header4.png",
+			"type": "image",
+			"name": "header4_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/beijingtu.png",
+			"type": "image",
+			"name": "beijingtu_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_1.png",
+			"type": "image",
+			"name": "mj_btn_1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_back.png",
+			"type": "image",
+			"name": "mj_btn_back_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_bg9.png",
+			"type": "image",
+			"name": "mj_btn_bg9_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_fdsx.png",
+			"type": "image",
+			"name": "mj_btn_fdsx_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_more.png",
+			"type": "image",
+			"name": "mj_btn_more_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_s.png",
+			"type": "image",
+			"name": "mj_btn_s_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_sz.png",
+			"type": "image",
+			"name": "mj_btn_sz_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_btn_wenhao.png",
+			"type": "image",
+			"name": "mj_btn_wenhao_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_dz.png",
+			"type": "image",
+			"name": "mj_dz_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_jqqd.png",
+			"type": "image",
+			"name": "mj_jqqd_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_money.png",
+			"type": "image",
+			"name": "mj_money_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_scmj_bg.png",
+			"type": "image",
+			"name": "mj_scmj_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select1_bg.png",
+			"type": "image",
+			"name": "mj_select1_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select2_bg.png",
+			"type": "image",
+			"name": "mj_select2_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select3_bg.png",
+			"type": "image",
+			"name": "mj_select3_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select4_bg.png",
+			"type": "image",
+			"name": "mj_select4_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select6_bg.png",
+			"type": "image",
+			"name": "mj_select6_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_select_bg.png",
+			"type": "image",
+			"name": "mj_select_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_wanfa_bg.png",
+			"type": "image",
+			"name": "mj_wanfa_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xc_1.png",
+			"type": "image",
+			"name": "mj_xc_1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xc_2.png",
+			"type": "image",
+			"name": "mj_xc_2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xc_3.png",
+			"type": "image",
+			"name": "mj_xc_3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xc_4.png",
+			"type": "image",
+			"name": "mj_xc_4_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xc_bg.png",
+			"type": "image",
+			"name": "mj_xc_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xlch_bg.png",
+			"type": "image",
+			"name": "mj_xlch_bg_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/select/mj_xlch_bg1.png",
+			"type": "image",
+			"name": "mj_xlch_bg1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/boy_1.png",
+			"type": "image",
+			"name": "boy_1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/boy_2.png",
+			"type": "image",
+			"name": "boy_2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/boy_3.png",
+			"type": "image",
+			"name": "boy_3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/girl_1.png",
+			"type": "image",
+			"name": "girl_1_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/girl_2.png",
+			"type": "image",
+			"name": "girl_2_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/touxiang/girl_3.png",
+			"type": "image",
+			"name": "girl_3_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/weitu/mj_xc_number2.fnt",
+			"type": "font",
+			"name": "mj_xc_number2_fnt"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/weitu/shuzi.fnt",
+			"type": "font",
+			"name": "shuzi_fnt"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_1_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_1_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_2_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_2_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_3_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_3_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_4_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_4_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_5_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_5_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_6_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_6_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_7_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_7_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_8_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_8_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_9_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_9_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_10_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_10_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_11_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_11_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_12_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_12_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_13_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_13_big_png"
+		},
+		{
+			"url": "gameAssets/afterloading/big/majiang/shangjia/shangjia_shupai_14_big.png",
+			"type": "image",
+			"name": "shangjia_shupai_14_big_png"
+		},
+		{
+			"url": "assets/UI/btn.png",
+			"type": "image",
+			"name": "btn_png"
+		},
+		{
+			"url": "assets/UI/btn.json",
+			"type": "sheet",
+			"name": "btn_json",
+			"subkeys": "0,1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,63,64,65,66,67,68,69,7,70,71,72,73,74,75,76,77,78,79,8,80,9"
+		},
+		{
+			"url": "assets/UI/img_main_wheel.png",
+			"type": "image",
+			"name": "img_main_wheel_png"
+		},
+		{
+			"url": "assets/UI/img_base_bg.jpg",
+			"type": "image",
+			"name": "img_base_bg_jpg"
+		},
+		{
+			"url": "assets/UI/img_fg_bg.jpg",
+			"type": "image",
+			"name": "img_fg_bg_jpg"
+		},
+		{
+			"url": "assets/UI/XIYOUJI__1.png",
+			"type": "image",
+			"name": "XIYOUJI__1_png"
+		},
+		{
+			"url": "assets/UI/XIYOUJI_2.png",
+			"type": "image",
+			"name": "XIYOUJI_2_png"
+		},
+		{
+			"url": "assets/UI/icon.json",
+			"type": "sheet",
+			"name": "icon_json",
+			"subkeys": "0,1,10,11,2,3,4,5,6,7,8,9"
+		},
+		{
+			"url": "assets/animation/test_tex.json",
+			"type": "json",
+			"name": "test_tex_json"
+		},
+		{
+			"url": "assets/animation/test_tex.png",
+			"type": "image",
+			"name": "test_tex_png"
+		},
+		{
+			"url": "assets/animation/test_ske.json",
+			"type": "json",
+			"name": "test_ske_json"
+		},
+		{
+			"url": "assets/animation/wild_ske.json",
+			"type": "json",
+			"name": "wild_ske_json"
+		},
+		{
+			"url": "assets/animation/wild_tex.json",
+			"type": "json",
+			"name": "wild_tex_json"
+		},
+		{
+			"url": "assets/animation/wild_tex.png",
+			"type": "image",
+			"name": "wild_tex_png"
+		},
+		{
+			"url": "assets/UI/12.png",
+			"type": "image",
+			"name": "12_png"
+		},
+		{
+			"url": "assets/UI/13.png",
+			"type": "image",
+			"name": "13_png"
+		},
+		{
+			"url": "assets/UI/1.png",
+			"type": "image",
+			"name": "1_png"
+		},
+		{
+			"url": "assets/UI/kuang.png",
+			"type": "image",
+			"name": "kuang_png"
+		},
+		{
+			"url": "assets/UI/icon_3.json",
+			"type": "sheet",
+			"name": "icon_3_json",
+			"subkeys": "0,1,2,3,4,5,6,7,8"
+		},
+		{
+			"url": "assets/UI/mokey/0.png",
+			"type": "image",
+			"name": "0_png"
+		},
+		{
+			"url": "assets/UI/mokey/1.png",
+			"type": "image",
+			"name": "14_png"
+		},
+		{
+			"url": "assets/UI/mokey/189.png",
+			"type": "image",
+			"name": "189_png"
+		},
+		{
+			"url": "assets/UI/mokey/2.png",
+			"type": "image",
+			"name": "2_png"
+		},
+		{
+			"url": "assets/UI/mokey/218.png",
+			"type": "image",
+			"name": "218_png"
+		},
+		{
+			"url": "assets/UI/mokey/3.png",
+			"type": "image",
+			"name": "3_png"
+		},
+		{
+			"url": "assets/UI/mokey/4.png",
+			"type": "image",
+			"name": "4_png"
+		},
+		{
+			"url": "assets/UI/mokey/5.png",
+			"type": "image",
+			"name": "5_png"
+		},
+		{
+			"url": "assets/UI/mokey/6.png",
+			"type": "image",
+			"name": "6_png"
+		},
+		{
+			"url": "assets/UI/mokey/7.png",
+			"type": "image",
+			"name": "7_png"
+		},
+		{
+			"url": "assets/UI/mokey/8.png",
+			"type": "image",
+			"name": "8_png"
+		},
+		{
+			"url": "assets/UI/mokey/9.png",
+			"type": "image",
+			"name": "9_png"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_1.jpg",
+			"type": "image",
+			"name": "mokey_1_jpg"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_2.png",
+			"type": "image",
+			"name": "mokey_2_png"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_3.png",
+			"type": "image",
+			"name": "mokey_3_png"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_4.png",
+			"type": "image",
+			"name": "mokey_4_png"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_5.png",
+			"type": "image",
+			"name": "mokey_5_png"
+		},
+		{
+			"url": "assets/UI/mokey/mokey_6.png",
+			"type": "image",
+			"name": "mokey_6_png"
+		},
+		{
+			"url": "assets/UI/im_6.png",
+			"type": "image",
+			"name": "im_6_png"
+		},
+		{
+			"url": "assets/UI/loading.png",
+			"type": "image",
+			"name": "loading_png"
+		},
+		{
+			"url": "assets/UI/bg_01.jpg",
+			"type": "image",
+			"name": "bg_01_jpg"
+		},
+		{
+			"url": "assets/UI/tiangong.png",
+			"type": "image",
+			"name": "tiangong_png"
+		},
+		{
+			"url": "assets/UI/bg_color.png",
+			"type": "image",
+			"name": "bg_color_png"
+		},
+		{
+			"url": "assets/UI/cloud_1.png",
+			"type": "image",
+			"name": "cloud_1_png"
+		},
+		{
+			"url": "assets/UI/cloud_2.png",
+			"type": "image",
+			"name": "cloud_2_png"
+		},
+		{
+			"url": "assets/UI/cloud_3.png",
+			"type": "image",
+			"name": "cloud_3_png"
+		},
+		{
+			"url": "assets/UI/cloud_4.png",
+			"type": "image",
+			"name": "cloud_4_png"
+		},
+		{
+			"url": "assets/UI/cloud_5.png",
+			"type": "image",
+			"name": "cloud_5_png"
+		},
+		{
+			"url": "assets/UI/ba.png",
+			"type": "image",
+			"name": "ba_png"
+		},
+		{
+			"url": "assets/UI/operating.png",
+			"type": "image",
+			"name": "operating_png"
+		},
+		{
+			"url": "assets/UI/by2.png",
+			"type": "image",
+			"name": "by2_png"
+		},
+		{
+			"url": "assets/UI/bg_1.png",
+			"type": "image",
+			"name": "bg_1_png"
+		},
+		{
+			"url": "assets/UI/bg1_fw.png",
+			"type": "image",
+			"name": "bg1_fw_png"
+		},
+		{
+			"url": "assets/UI/peach.png",
+			"type": "image",
+			"name": "peach_png"
+		},
+		{
+			"url": "assets/UI/line.png",
+			"type": "image",
+			"name": "line_png"
+		},
+		{
+			"url": "assets/UI/big_bang.png",
+			"type": "image",
+			"name": "big_bang_png"
+		},
+		{
+			"url": "assets/UI/loading_bg.png",
+			"type": "image",
+			"name": "loading_bg_png"
+		},
+		{
+			"url": "assets/UI/pay_3_1.png",
+			"type": "image",
+			"name": "pay_3_1_png"
+		},
+		{
+			"url": "assets/UI/pay_1.png",
+			"type": "image",
+			"name": "pay_1_png"
+		},
+		{
+			"url": "assets/UI/pay_2.png",
+			"type": "image",
+			"name": "pay_2_png"
+		},
+		{
+			"url": "assets/UI/pay_2_1.png",
+			"type": "image",
+			"name": "pay_2_1_png"
+		},
+		{
+			"url": "assets/UI/pay_3.png",
+			"type": "image",
+			"name": "pay_3_png"
+		},
+		{
+			"url": "assets/UI/pay _bt_1.png",
+			"type": "image",
+			"name": "pay _bt_1_png"
+		},
+		{
+			"url": "assets/UI/pay _bt_1_1.png",
+			"type": "image",
+			"name": "pay _bt_1_1_png"
+		},
+		{
+			"url": "assets/UI/04.png",
+			"type": "image",
+			"name": "04_png"
+		},
+		{
+			"url": "assets/UI/07.png",
+			"type": "image",
+			"name": "07_png"
+		},
+		{
+			"url": "assets/UI/cloud3.png",
+			"type": "image",
+			"name": "cloud3_png"
+		},
+		{
+			"url": "assets/UI/tiangong_btn.json",
+			"type": "sheet",
+			"name": "tiangong_btn_json",
+			"subkeys": "bt_1,bt_1_1,bt_3,bt_3_1,bt_4,bt_4_1,bt_5,bt_5_1,bt_6,bt_6_1,bt_7,bt_7_1,title_2"
+		},
+		{
+			"url": "assets/animation/peach_tex.json",
+			"type": "json",
+			"name": "peach_tex_json"
+		},
+		{
+			"url": "assets/animation/peach_tex.png",
+			"type": "image",
+			"name": "peach_tex_png"
+		},
+		{
+			"url": "../src/temp.proto",
+			"type": "text",
+			"name": "temp3_proto"
+		},
+		{
+			"url": "../src/temp2.proto",
+			"type": "text",
+			"name": "temp2_proto"
+		},
+		{
+			"url": "assets/temp.proto",
+			"type": "bin",
+			"name": "temp_proto"
+		}
+	]
+}

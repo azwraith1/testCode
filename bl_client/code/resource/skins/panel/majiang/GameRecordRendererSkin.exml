@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameRecordRendererSkin" width="602" height="30" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="xuhao" text="1" width="20" textColor="0xb16615" size="15" verticalCenter="0" fontFamily="Microsoft YaHei" rotation="0.46" x="30" textAlign="center"/>
+	<e:Label id="paijunumber" text="0" x="94" width="90" textColor="0xb16615" size="15" verticalCenter="0" fontFamily="Microsoft YaHei" textAlign="center"/>
+	<e:Label id="room" text="初级场" x="225" width="60" textColor="0xb16615" size="15" verticalCenter="0" fontFamily="Microsoft YaHei" textAlign="center"/>
+	<e:Label id="winOrLose" text="0" x="307.75" width="111.25" textColor="0xb16615" size="15" verticalCenter="0.5" fontFamily="Microsoft YaHei" textAlign="center" anchorOffsetX="0"/>
+	<e:Label id="gametimes" text="2018-09-01 18:00:00" x="430" width="160" textColor="0xb16615" size="15" verticalCenter="0.5" fontFamily="Microsoft YaHei" textAlign="center"/>
+	<e:Image source="record_1_png" y="28" width="602" scale9Grid="3,0,18,2"/>
+</e:Skin>

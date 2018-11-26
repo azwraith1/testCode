@@ -1,0 +1,1 @@
+egret publish --version 1 && node C:/Users/sc30/Desktop/sc/mergeJS.js

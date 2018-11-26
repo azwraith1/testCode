@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="majiang.MineChupaiGroupSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:majiang="majiang.*">
+	<e:Group id="mainGroup" anchorOffsetX="0">
+		<e:layout>
+			<e:BasicLayout/>
+		</e:layout>
+		<e:Image source="ziji_dachupai_1_big_png" x="33" y="188"/>
+		<e:Image source="ziji_dachupai_1_big_png" x="204.4" y="116.4"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="0" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="60" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="120" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="180.5" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="240.5" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="300.5" y="0"/>
+		<e:Image source="ziji_dachupai_4_big_png" x="360.5" y="0"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="-2" y="72.9"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="59" y="72.9"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="119.5" y="72.9"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="179.5" y="72.4"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="240" y="72.4"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="300" y="72.4"/>
+		<e:Image source="ziji_dachupai_3_big_png" x="360.5" y="72.4"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="-3.02" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="57" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="117.33" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="177.5" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="239" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="300.5" y="147"/>
+		<e:Image source="ziji_dachupai_2_big_png" x="361.83" y="147"/>
+	</e:Group>
+</e:Skin>

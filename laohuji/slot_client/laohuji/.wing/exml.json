@@ -1,0 +1,25 @@
+{
+  "166e89b8c4f": {
+    "path": "game\\core\\view\\scene\\game\\test.ts",
+    "class": "test",
+    "parentPath": ""
+  },
+  "global": {
+    "globalAutoLayerMarkEnable": false
+  },
+  "166ed83d2ac": {
+    "path": "game\\core\\view\\scene\\game\\test2.ts",
+    "class": "test2",
+    "parentPath": ""
+  },
+  "166f67e932d": {
+    "path": "game\\core\\view\\panel\\BonusPanel.ts",
+    "class": "BonusPanel",
+    "parentPath": ""
+  },
+  "16710e46f36": {
+    "path": "game\\core\\view\\panel\\TipsPanel.ts",
+    "class": "TipsPanel",
+    "parentPath": ""
+  }
+}

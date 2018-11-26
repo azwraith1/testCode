@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuSceneSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui"
+        xmlns:w="http://ns.egret.com/wing" xmlns:niuniu="niuniu.*">
+	<w:Config id="1668181bcb9" />
+	<e:Group id="resizeGroup">
+		<e:Group id="uiGroup" left="0" right="0" top="0" bottom="0">
+			<e:Image source="nn_bg_jpg" scaleX="1" scaleY="1" left="0" top="2" right="0" bottom="-2" />
+			<e:Image source="nn_desk_bg_png" alpha="1" scaleX="1"
+			         scaleY="1"  horizontalCenter="0" verticalCenter="0"/>
+			<e:Group id="player6" anchorOffsetY="0" anchorOffsetX="0" width="283"
+			         height="171" verticalCenter="4.5" left="20" visible="false">
+				<niuniu:NiuniuHeader id="header6" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" />
+				<niuniu:NiuniuCardList1 id="cards6" skinName="NiuniuCardListSkin1" alpha="1" scaleX="1" scaleY="1"
+				                         x="118" y="73.93" width="165" height="88" visible="false"/>
+			</e:Group>
+			<e:Group id="player5" width="190" height="249" anchorOffsetY="0" anchorOffsetX="0" verticalCenter="-211.5"
+			         horizontalCenter="-230" visible="false">
+				<niuniu:NiuniuHeader id="header5" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" x="30" />
+				<niuniu:NiuniuCardList1 id="cards5" y="161" skinName="NiuniuCardListSkin1" alpha="1"  width="165" height="88" x="0" visible="false"/>
+			</e:Group>
+			<e:Group id="player4" width="190" height="249" anchorOffsetY="0" anchorOffsetX="0"
+			         horizontalCenter="33" verticalCenter="-212.5" visible="false">
+				<niuniu:NiuniuHeader id="header4" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" x="30" />
+				<niuniu:NiuniuCardList1 id="cards4" y="161" skinName="NiuniuCardListSkin1" alpha="1" scaleX="1" scaleY="1"  width="165" height="88" x="0" visible="false"/>
+			</e:Group>
+			<e:Group id="player3" width="190" height="249" anchorOffsetY="0" anchorOffsetX="0"
+			         horizontalCenter="299" verticalCenter="-213.5" visible="false">
+				<niuniu:NiuniuHeader id="header3" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" x="30" />
+				<niuniu:NiuniuCardList1 id="cards3" y="160" skinName="NiuniuCardListSkin1" alpha="1" scaleX="1" scaleY="1"  width="165" height="88" x="0" visible="false"/>
+			</e:Group>
+			<e:Group id="player2" anchorOffsetY="0" anchorOffsetX="0" width="283"
+			         height="171" right="32" verticalCenter="4.5" visible="false">
+				<niuniu:NiuniuHeader id="header2" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" right="0" />
+				<niuniu:NiuniuCardList1 id="cards2" skinName="NiuniuCardListSkin1" alpha="1" scaleX="1" scaleY="1" y="73.35"  width="165" height="88" visible="false"/>
+			</e:Group>
+			<e:Group id="player1" anchorOffsetY="0" height="228" left="154" bottom="28" anchorOffsetX="0" width="590">
+				<niuniu:NiuniuHeader id="header1" skinName="NiuNiuHeaderSkin" anchorOffsetY="0" scaleX="1" scaleY="1" x="0"  y="74"/>
+				<niuniu:NiuniuCardList1 id="cards1_1" skinName="NiuniuCardListSkin1" alpha="1" scaleX="1" scaleY="1" x="425" y="0" width="165" height="88" visible="false"/>
+			</e:Group>
+			<niuniu:NiuniuCaculatorBar id="caculator" skinName="NiuniuCaculatorBarSkin" horizontalCenter="0" verticalCenter="113"
+			                           x="454" y="382" scaleX="1" scaleY="1"  visible="false"/>
+			<niuniu:NiuniuTimeDirectionBar id="timeBar" skinName="NiuniutimeDirectionBarSkin"
+			                               scaleX="1" scaleY="1"  horizontalCenter="0" verticalCenter="0" visible="false"/>
+			<e:Image id="pl1" source="nn_puker_1_png" horizontalCenter="-226" verticalCenter="255.5"
+			          visible="false"/>
+			<e:Image id="pl2" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="357.5" verticalCenter="48"
+			          visible="false"/>
+			<e:Image id="pl3" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="236.5" verticalCenter="-133"
+			          visible="false"/>
+			<e:Image id="pl4" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="-29.5" verticalCenter="-132"
+			          visible="false"/>
+			<e:Image id="pl5" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="-292.5" verticalCenter="-129"
+			          visible="false"/>
+			<e:Image id="pl6" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="-409.5" verticalCenter="45"
+			          visible="false"/>
+		</e:Group>
+		<e:Group id="effectGroup" left="0" right="0" top="0" bottom="0">
+
+		</e:Group>
+
+		<e:Group id="touchGroup" left="0" right="0" top="0" bottom="0">
+			<e:Button id="ynBtn" skinName="NiuniuYNBtnSkin" scaleX="1" scaleY="1" right="75" bottom="114" x="1027" y="537"
+			           visible="false"/>
+			<e:Button id="wnBtn" skinName="NiuniuWNBtnSkin" scaleX="1" scaleY="1" right="74" bottom="25" x="1028" y="626"
+			           visible="false"/>
+			<niuniu:NiuniuCardList2 id="cards1" x="356" y="538" skinName="NiuniuCardListSkin2" width="571" height="158"
+			                         visible="false"/>
+			<niuniu:NiuniuQZBar id="qzBar" skinName="NiuNiuQZBarSkin" horizontalCenter="0" verticalCenter="124.5"  visible="false"/>
+			<niuniu:NiuniuYZBar id="yzBar" horizontalCenter="0" verticalCenter="124.5" skinName="NiuNiuYZBarSkin"  visible="false"/>
+			<e:Button id="restartBtn" label="再来一局" bottom="40" horizontalCenter="0" visible="false">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="nn_btn_1_png"  y="0" x="0"/>
+						<e:Label id="labelDisplay"  size="25" text="再来一局" fontFamily="Microsoft YaHei" x="7" y="10.01" stroke="2" strokeColor="0x000000"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="exitBtn" label="Button" left="20" top="20">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="75" height="75" source="nn_back_btn_png"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
+		</e:Group>
+	</e:Group>
+</e:Skin>

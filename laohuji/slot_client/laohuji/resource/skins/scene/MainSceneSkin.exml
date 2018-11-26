@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainSenceSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="860" height="515" x="218" y="105" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group id="round_group1" width="172" height="515" x="0" y="0"/>
+		<e:Group id="round_group2" width="172" height="515" x="172" y="0" scaleX="1" scaleY="1"/>
+		<e:Group id="round_group3" width="172" height="515" x="344" y="0" scaleX="1" scaleY="1"/>
+		<e:Group id="round_group4" width="172" height="515" x="516" y="0" scaleX="1" scaleY="1"/>
+		<e:Group id="round_group5" width="172" height="515" x="688" y="0" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Image id="window_bg" source="XIYOUJI__1_png" anchorOffsetX="0" width="1280" height="720"/>
+	<e:Group width="200" height="200" verticalCenter="0" right="0">
+		<e:Button id="run_btn" label="" verticalCenter="0" width="120" height="120" right="0" enabled="true">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_json.56" source.down="btn_json.57"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image source="btn_json.5" verticalCenter="0" left="0"/>
+	</e:Group>
+</e:Skin>

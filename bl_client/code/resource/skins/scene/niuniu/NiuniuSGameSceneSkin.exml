@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuSGameSceneSkin" xmlns:e="http://ns.egret.com/eui" width="720" xmlns:w="http://ns.egret.com/wing"
+        xmlns:niuniu="niuniu.*" height="1280">
+	<e:Group id="resizeGroup">
+		<e:Image source="nns_game_bg_jpg" scaleX="1" scaleY="1"  left="0" top="0" right="0" bottom="0" width="720" height="1280"/>
+		<e:Group id="uiGroup" left="0" right="0" top="0" bottom="0" x="0" y="0" scaleX="1" scaleY="1">
+			<niuniu:NiuniuNewTimeBar id="timeBar" skinName="NiuniuNewtimeDirectionBarSkin" scaleX="1" scaleY="1"
+			                          horizontalCenter="8.5" verticalCenter="-136.5" visible="false"/>
+			<e:Group id="player4" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0" width="180" horizontalCenter="-254"
+			         verticalCenter="-101.5" height="303" visible="false">
+				<niuniu:NiuniuNewHeader id="header4" y="26" skinName="NiuniuNewHeaderSkin" x="31" />
+				<niuniu:NiuniuCardList1 id="cards4" y="163" skinName="NiuniuCardListSkin1" width="165" height="88" x="10"
+				                         visible="false"/>
+				<e:Group id="wc4" y="235" scaleX="1" scaleY="1" x="-12" visible="false">
+					<e:Image scaleX="1" scaleY="1" source="nns_public_bg_png" horizontalCenter="0"/>
+					<e:Label id="wancheng3" text="完成" size="25" fontFamily="SimHei" stroke="1" strokeColor="0x383838" scaleX="1" scaleY="1" y="8" horizontalCenter="-25"/>
+				</e:Group>
+
+			</e:Group>
+			<e:Group id="player3" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0" width="189" horizontalCenter="-6.5" verticalCenter="-375" height="303" visible="false">
+				<niuniu:NiuniuNewHeader id="header3" y="26" skinName="NiuniuNewHeaderSkin" x="31"/>
+				<niuniu:NiuniuCardList1 id="cards3" y="164" skinName="NiuniuCardListSkin1" width="165" height="88" x="18" visible="false"/>
+				<e:Group id="wc3" x="-12" y="235" scaleX="1" scaleY="1" visible="false">
+					<e:Image scaleX="1" scaleY="1" source="nns_public_bg_png"/>
+					<e:Label id="wancheng2" text="完成" size="25" fontFamily="SimHei" stroke="1" strokeColor="0x383838" scaleX="1" scaleY="1" horizontalCenter="-8" verticalCenter="0.5"/>
+				</e:Group>
+
+			</e:Group>
+			<e:Group id="player2" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0" width="180" horizontalCenter="244"
+			         verticalCenter="-102.5" height="303" visible="false">
+				<niuniu:NiuniuNewHeader id="header2" y="26" skinName="NiuniuNewHeaderSkin" x="31" />
+				<niuniu:NiuniuCardList1 id="cards2" y="163" skinName="NiuniuCardListSkin1" width="165" height="88" x="12"
+				                         visible="false"/>
+				<e:Group id="wc2" x="-12" y="235" scaleX="1" scaleY="1" visible="false">
+					<e:Image scaleX="1" scaleY="1" source="nns_public_bg_png"/>
+					<e:Label id="wancheng1" text="完成" size="25" fontFamily="SimHei" stroke="1" strokeColor="0x383838" scaleX="1" scaleY="1" horizontalCenter="-14" verticalCenter="0.5"/>
+				</e:Group>
+
+			</e:Group>
+			<e:Group id="player1" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="3" verticalCenter="209.5" width="180" height="303">
+				<niuniu:NiuniuNewHeader id="header1" skinName="NiuniuNewHeaderSkin" x="31" y="26"/>
+				<niuniu:NiuniuCardList1 id="cards1_1" skinName="NiuniuCardListSkin1" y="163" x="12" visible="false"/>
+
+				<e:Group id="wc1" x="-12" y="235" scaleX="1" scaleY="1" visible="false">
+					<e:Image scaleX="1" scaleY="1" source="nns_public_bg_png"/>
+					<e:Label id="wancheng0" text="完成" size="25" fontFamily="SimHei" stroke="1" strokeColor="0x383838" scaleX="1" scaleY="1" horizontalCenter="-14" verticalCenter="0.5"/>
+				</e:Group>
+			</e:Group>
+			<e:Image id="pl1" source="nn_puker_1_png"  horizontalCenter="-253" verticalCenter="401.5" visible="false"/>
+			<e:Image id="pl2" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="197.5" verticalCenter="-48"
+			         x="10" y="10"  visible="false"/>
+			<e:Image id="pl3" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="-51.5" verticalCenter="-319"
+			         x="10" y="10"  visible="false"/>
+			<e:Image id="pl4" source="nn_puker_1_png" scaleX="0.55" scaleY="0.55" horizontalCenter="-302.5" verticalCenter="-47"
+			         x="10" y="10"  visible="false"/>
+			<e:Group id="tipsGroup" verticalCenter="-22" horizontalCenter="0" visible="false">
+				<e:Image scaleX="1" scaleY="1" source="nns_tisi_bg_png" y="0"/>
+				<e:Label id="tipLabel" text="请等待..." scaleX="1" scaleY="1" anchorOffsetX="0" width="269" anchorOffsetY="0" size="25" fontFamily="SimHei" textColor="0xffffff" textAlign="center" verticalAlign="middle" x="6" y="3" height="50"/>
+			</e:Group>
+		</e:Group>
+		<e:Group id="effectGroup" right="0" top="0" bottom="0" y="0" scaleX="1" scaleY="1" left="0"/>
+		<e:Group id="touchGroup" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" bottom="0" left="0" right="0" top="0">
+			<niuniu:NiuniuNewQZBar id="qzBar" skinName="NiuniuNewBtnSkin" horizontalCenter="6" verticalCenter="261.5" width="520" visible="false"/>
+			<niuniu:NiuniuNewYZBar id="yzBar" skinName="NiuniuNewYZBtnSkin" verticalCenter="261.5" horizontalCenter="14" width="650" visible="false"/>
+			<niuniu:NiuniuCardList2 id="cards1" skinName="NiuniuCardListSkin2" verticalCenter="409.5" horizontalCenter="10" width="640" visible="false"/>
+			<e:Group id="caculatorGroup" verticalCenter="258.5" horizontalCenter="5" width="598" anchorOffsetX="0" visible="false">
+				<niuniu:NiuniuNewCaculatorBar id="caculator" y="0" skinName="NiuniuNewCaculatorBarSkin" scaleX="1" scaleY="1"  x="0"/>
+				<e:Button id="ynBtn" label="Button" x="336.02" y="6.48" skinName="NiuniuYNSkin" scaleX="1" scaleY="1" />
+				<e:Button id="wnBtn" label="Button" x="474.68" y="4.96" skinName="NiuniuWNSkin" scaleX="1" scaleY="1" />
+			</e:Group>
+			<e:Group id="otherBtnGroups" horizontalCenter="9" verticalCenter="260.5" width="111" height="61" visible="false">
+				<e:Button id="boomBtn" label="Button" skinName="NiuniuZDSkin" scaleX="1" scaleY="1"  visible="false"/>
+				<e:Button id="fiveBtn" label="Button" skinName="NiuniuWXNSkin" scaleX="1" scaleY="1"  visible="false"/>
+			</e:Group>
+			<e:Group anchorOffsetY="0" height="300" scaleX="1" scaleY="1" width="100" left="0" top="0">
+				<e:Group id="gnGroup" anchorOffsetY="0" scaleX="1" scaleY="1" width="58" height="172" top="-80" horizontalCenter="8"
+				         visible="false">
+					<e:Image x="57.38" y="0.35" source="nns_9gg_png" scale9Grid="27,11,8,34" anchorOffsetX="0" width="171"
+					         rotation="90" scaleX="1" scaleY="1" />
+					<e:Button id="backBtn" label="Button" x="6.09" y="33.69">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+								<e:Image source="nns_back_btn_png" />
+							</e:Skin>
+						</e:skinName>
+					</e:Button>
+					<e:Button id="setBtn" label="Button" x="6.78" y="97.02">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+								<e:Image source="nns_set_btn_png" />
+							</e:Skin>
+						</e:skinName>
+					</e:Button>
+				</e:Group>
+				<e:Button id="btnxia" label="Button" width="70" height="72" scaleX="1" scaleY="1" horizontalCenter="8" top="24" visible="false">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+							<e:Image source="nns_xiala_btn_png" />
+						</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Button id="btnzuo" label="Button" scaleX="1" scaleY="1" horizontalCenter="7" top="24">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image source="nns_caidan_png"/>
+						</e:Skin>
+					</e:skinName>
+
+				</e:Button>
+				<e:Rect id="rects" width="58" height="172" x="28.71" y="90.65" visible="false" />
+			</e:Group>
+			<e:Button id="restartBtn" label="Button" scaleX="1" scaleY="1" skinName="NiuniuXYJSkin" verticalCenter="404.5" horizontalCenter="7.5"/>
+		</e:Group>
+	</e:Group>
+	<w:Config id="166ed6b32a8" />
+</e:Skin>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="HallbllhjSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="lhj_Group" visible="false">
+		<e:Image scaleX="1" scaleY="1" source="lhj_bg_png"/>
+		<e:Image scaleX="1" scaleY="1" x="115.14" y="3" source="lhj_bg1_png"/>
+		<e:Image scaleX="1" scaleY="1" x="261.65" y="20.35" source="lhj_hand_png"/>
+		<e:Image scaleX="1" scaleY="1" x="185.67" y="67.03" source="lhj_7_png"/>
+		<e:Image scaleX="1" scaleY="1" x="281.65" y="40.35" source="lhj_apple_png" visible="false"/>
+		<e:Image scaleX="1" scaleY="1" x="26.32" y="140.01" source="lhj_title_png"/>
+		<e:Label id="peoples_lhj" text="7129" x="267.88" y="161.62" anchorOffsetX="0" width="67.27" anchorOffsetY="0" height="20.03" fontFamily="Microsoft YaHei" textColor="0xFFFFFF" verticalAlign="middle" textAlign="left" size="20" scaleX="1" scaleY="1"/>
+		<e:Image scaleX="1" scaleY="1" horizontalCenter="83.5" verticalCenter="70.5" source="hall_online_png"/>
+	</e:Group>
+	<e:Image id="lhj" scaleX="1" scaleY="1" source="hall_lhjm_png"/>
+	<e:Image scaleX="1" scaleY="1" x="256" y="163" source="mj_qqqd_png"/>
+</e:Skin>

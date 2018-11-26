@@ -1,0 +1,34 @@
+
+option java_package = "com.quxiang.game.commons.protocol";
+ 
+package game_protocol;
+
+
+
+//request
+//|int|int|content|
+ //  1  2     3
+
+ //1: 长度
+ //2: 包头
+ //3：内容
+
+
+
+
+//进入游戏服
+//包头1951
+message EnterGame{
+     //用户ID
+    optional int64 user_id=1;
+    //用户名称
+    optional string user_name=2;
+    //主题ID
+    optional int32 theme_id=3;
+    //主题名称
+    optional string theme_name=4;
+    //语言类型 4  1：英文，2：中文
+    optional int32 language_type=5;
+    
+}
+

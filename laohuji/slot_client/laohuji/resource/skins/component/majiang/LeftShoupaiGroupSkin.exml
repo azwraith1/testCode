@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LeftShoupaiGroupSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="mainGroup">
+		<e:Image id="image1" source="zuojia_shupai_1_big_png" y="0" scaleX="1" scaleY="1"/>
+		<e:Image id="image2" source="zuojia_shupai_2_big_png" x="-8" y="38" scaleX="1" scaleY="1"/>
+		<e:Image id="image3" source="zuojia_shupai_3_big_png" x="-16" y="77" scaleX="1" scaleY="1"/>
+		<e:Image id="image4" source="zuojia_shupai_4_big_png" x="-24" y="118" scaleX="1" scaleY="1"/>
+		<e:Image id="image5" source="zuojia_shupai_5_big_png" x="-32.5" y="160.5" scaleX="1" scaleY="1"/>
+		<e:Image id="image6" source="zuojia_shupai_6_big_png" x="-41" y="204" scaleX="1" scaleY="1"/>
+		<e:Image id="image7" source="zuojia_shupai_7_big_png" x="-50" y="248" scaleX="1" scaleY="1"/>
+		<e:Image id="image8" source="zuojia_shupai_8_big_png" x="-58.5" y="294" scaleX="1" scaleY="1"/>
+		<e:Image id="image9" source="zuojia_shupai_9_big_png" x="-68" y="341" scaleX="1" scaleY="1"/>
+		<e:Image id="image10" source="zuojia_shupai_10_big_png" x="-78" y="388" scaleX="1" scaleY="1"/>
+		<e:Image id="image11" source="zuojia_shupai_11_big_png" x="-88" y="438" scaleX="1" scaleY="1"/>
+		<e:Image id="image12" source="zuojia_shupai_12_big_png" x="-98" y="490" scaleX="1" scaleY="1"/>
+		<e:Image id="image13" source="zuojia_shupai_13_big_png" x="-108" y="542" scaleX="1" scaleY="1"/>
+	</e:Group>
+</e:Skin>

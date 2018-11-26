@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="majiang.TimerDirectionBarSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="directionImage" source="mj_dir_db_png"/>
+	<e:Image id="rightBg" source="mj_dir_light_2_png" x="227.68" y="29" visible="false"/>
+	<e:Image id="leftBg" source="mj_dir_light_4_png" x="23.66" y="29.33" visible="false"/>
+	<e:Image id="topBg" source="mj_dir_light_3_png" x="45.65" y="17.69" visible="false"/>
+	<e:Image id="bottomBg" source="mj_dir_light_1_png" x="38" y="192.65" visible="false"/>
+	<e:BitmapLabel id="timeLabel" y="91.18" text="09" font="font_timer_fnt" width="127.33" height="80" textAlign="center" horizontalCenter="0.5" letterSpacing="-5" anchorOffsetX="0"/>
+	<e:BitmapLabel id="leftLabel" x="63" font="font_direction_fnt" text="n" anchorOffsetX="32" anchorOffsetY="34" rotation="90" y="133"/>
+	<e:BitmapLabel id="bottomLabel" x="164.67" font="font_direction_fnt" text="e" anchorOffsetX="32" anchorOffsetY="34" y="225.65"/>
+	<e:BitmapLabel id="topLabel" x="165.4" font="font_direction_fnt" text="w" anchorOffsetX="32" anchorOffsetY="34" y="46.6" rotation="180"/>
+	<e:BitmapLabel id="rightLabel" x="263.68" font="font_direction_fnt" text="s" anchorOffsetX="32" anchorOffsetY="34" rotation="-90" y="133"/>
+    
+
+</e:Skin>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="majiang.MineShoupaiGroupSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*" xmlns:majiang="majiang.*" height="204" width="1848">
+	<e:Group id="mainGroup">
+		<e:Image id="image1" source="ziji_shoupai_big_png" x="74" y="12"/>
+		<e:Image id="image2" source="ziji_shoupai_big_png" x="84" y="22"/>
+		<e:Image id="image3" source="ziji_shoupai_big_png" x="94" y="32"/>
+		<e:Image id="image4" source="ziji_shoupai_big_png" x="104" y="42"/>
+		<e:Image id="image5" source="ziji_shoupai_big_png" x="114" y="52"/>
+		<e:Image id="image6" source="ziji_shoupai_big_png" x="124" y="62"/>
+		<e:Image id="image7" source="ziji_shoupai_big_png" x="134" y="72"/>
+		<e:Image id="image8" source="ziji_shoupai_big_png" x="144" y="82"/>
+		<e:Image id="image9" source="ziji_shoupai_big_png" x="154" y="92"/>
+		<e:Image id="image10" source="ziji_shoupai_big_png" x="164" y="102"/>
+		<e:Image id="image11" source="ziji_shoupai_big_png" x="174" y="112"/>
+		<e:Image source="ziji_shoupai_big_png" x="194" y="132" id="image12"/>
+		<e:Image id="image13" source="ziji_shoupai_big_png" x="184" y="122"/>
+		<e:layout>
+			<e:HorizontalLayout gap="-2"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

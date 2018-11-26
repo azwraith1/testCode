@@ -1,0 +1,8 @@
+{"file":"nns_12345.png","frames":{
+"牛":{"x":41,"y":0,"w":38,"h":38,"offX":2,"offY":0,"sourceW":42,"sourceH":38},
+"一":{"x":39,"y":38,"w":38,"h":14,"offX":2,"offY":12,"sourceW":42,"sourceH":38},
+"二":{"x":79,"y":35,"w":38,"h":34,"offX":2,"offY":2,"sourceW":42,"sourceH":38},
+"三":{"x":79,"y":0,"w":40,"h":35,"offX":2,"offY":2,"sourceW":44,"sourceH":38},
+"四":{"x":0,"y":36,"w":39,"h":36,"offX":2,"offY":1,"sourceW":43,"sourceH":38},
+"五":{"x":0,"y":0,"w":41,"h":36,"offX":2,"offY":1,"sourceW":45,"sourceH":38},
+" ":{"x":117,"y":35,"w":5,"h":5,"offX":0,"offY":0,"sourceW":12,"sourceH":38}}}

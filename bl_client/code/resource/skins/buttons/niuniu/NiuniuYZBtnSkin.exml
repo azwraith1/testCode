@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="NiuniuYZBtnSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image x="0" source="nn_btn_2_png" y="0" scaleX="1" scaleY="1"/>
+	<e:Group horizontalCenter="0.5" verticalCenter="-3.5">
+		<e:Image source="nn_ride_png" touchEnabled="false" scaleX="1" scaleY="1" y="3"/>
+		<e:BitmapLabel id="labelDisplay" font="qzbtn_font_fnt" text="11" scaleX="1" scaleY="1" x="24" y="-3"/>
+	</e:Group>
+</e:Skin>

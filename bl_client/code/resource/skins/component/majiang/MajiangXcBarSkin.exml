@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MajiangXcBarSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" states="up,down"  width="236" height="376">
+	<e:Group id="bar" scaleX.down="0.9" scaleY.down="0.9" x="0" width="237" height="376">
+		<e:Image id="bar_img" x="0" y="0" scaleX="1" scaleY="1" source="mj_xc_4_png" y.down="53.32" x.down="39.96"/>
+		<e:Image id="bar_cc" y="22.33" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" source="mj_xc_4_4_png" horizontalCenter="0"/>
+
+
+
+		<e:Label id="zhunru" text="准入：50" anchorOffsetX="0" width="211" anchorOffsetY="0" height="32" fontFamily="Microsoft YaHei" size="18" textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" scaleX="1" scaleY="1" horizontalCenter="0.5" bottom="27"/>
+		<e:Group id="dzGroup" height="48" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" bottom="66">
+			<e:Image id="bar_dz" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" width="66" height="34" source="mj_xcdz_3_png" y="8"/>
+			<e:Label id="dizhu" text="100" anchorOffsetX="0" anchorOffsetY="0" height="42" fontFamily="Microsoft YaHei" size="40" textAlign="left" scaleX="1" scaleY="1" x="73" verticalAlign="middle" stroke="2" strokeColor="0xa74b07" textColor="0xfdf5d5" y="0"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

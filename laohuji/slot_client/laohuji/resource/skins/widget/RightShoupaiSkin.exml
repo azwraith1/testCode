@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RightShoupaiSkin" xmlns:e="http://ns.egret.com/eui">
+	<e:Image id="bgImage" source="zuojia_shupai_14_big_png" scaleX="-1" left="0"/>
+</e:Skin>

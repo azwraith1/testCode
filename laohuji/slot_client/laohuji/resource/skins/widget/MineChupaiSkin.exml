@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="majiang.MineChupaiSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="bgImage" x="0" y="0" source="ziji_dachupai_4_big_png"/>
+	<e:Image id="colorImage" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" scaleX="0.4" scaleY="0.4" source="img_cardvalue3_png" y="-12"/>
+</e:Skin>

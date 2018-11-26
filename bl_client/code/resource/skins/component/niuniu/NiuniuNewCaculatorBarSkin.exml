@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuNewCaculatorBarSkin" xmlns:e="http://ns.egret.com/eui" height="67" width="333">
+	<e:Image x="242" y="27" source="nns_dh_png"/>
+	<e:Image x="0" y="0" source="nns_jskk_png"/>
+	<e:Image x="86" y="0" source="nns_jskk_png"/>
+	<e:Image x="171" y="0" source="nns_jskk_png"/>
+	<e:Image y="0" x="261" source="nns_jskk_png"/>
+	<e:Image x="70" y="27" source="nns_jh_png"/>
+	<e:Image x="155" y="27" source="nns_jh_png"/>
+	<e:Label id="number0" text="" x="6" y="14" size="33" anchorOffsetX="0" width="55" textAlign="center" height="40" textColor="0xffffff"/>
+	<e:Label id="number1" text="" x="93" y="14" size="33" anchorOffsetX="0" width="55" textAlign="center" height="40" textColor="0xffffff"/>
+	<e:Label id="number2" text="" x="177" y="14" size="33" anchorOffsetX="0" width="55" textAlign="center" height="40" textColor="0xffffff"/>
+	<e:Label id="number3" text="" x="267" y="14" size="33" anchorOffsetX="0" width="55" textAlign="center" height="40" textColor="0xffffff"/>
+</e:Skin>

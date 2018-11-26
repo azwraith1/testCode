@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuCaculatorBarSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="nn_pai_bg_png"/>
+	<e:Image source="nn_etc_png" x="273" y="18"/>
+	<e:Image source="nn_pai_kuang_png" x="5" y="7"/>
+	<e:Image source="nn_pai_kuang_png" x="106" y="7"/>
+	<e:Image source="nn_pai_kuang_png" x="206" y="7"/>
+	<e:Image source="nn_pai_kuang_png" y="7" x="307"/>
+	<e:Image source="nn_plus_png" x="72" y="18"/>
+	<e:Image source="nn_plus_png" x="173" y="18"/>
+	<e:Label id="number0" text="" x="6" y="11" size="40" textColor="0xffd47e" anchorOffsetX="0" width="55" textAlign="center" height="40"/>
+	<e:Label id="number1" text="" x="108" y="11" size="40" textColor="0xFFD47E" anchorOffsetX="0" width="55" textAlign="center" height="40"/>
+	<e:Label id="number2" text="" x="208" y="11" size="40" textColor="0xFFD47E" anchorOffsetX="0" width="55" textAlign="center" height="40"/>
+	<e:Label id="number3" text="" x="309" y="11" size="40" textColor="0xFFD47E" anchorOffsetX="0" width="55" textAlign="center" height="40"/>
+</e:Skin>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuTypeBarSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="dbgroup" width="231" height="270" y="8" scaleX="1" scaleY="1" x="0"/>
+	<e:Label id="dizhu" text="底注：100" anchorOffsetX="0" anchorOffsetY="0" fontFamily="Microsoft YaHei" size="18" scaleX="1" scaleY="1" stroke="2" strokeColor="0xA74B07" textColor="0xFDF5D5" y="214" horizontalCenter="-2.5" height="18" width="200" textAlign="center"/>
+	<e:Label id="zhunru" text="准入：50" anchorOffsetX="0" anchorOffsetY="0" fontFamily="Microsoft YaHei" size="18" textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" scaleX="1" scaleY="1" horizontalCenter="-2.5" bottom="24" height="18" width="200"/>
+</e:Skin>

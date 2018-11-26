@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuNiuYZBarSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:niuniu="niuniu.*">
+	<e:Group height="60" width="630">
+		<e:Button id="btn0" label="" scaleX="1" scaleY="1" y="0" skinName="NiuniuYZBtnSkin"/>
+		<e:Button id="btn1" label="" scaleX="1" scaleY="1" x="126" y="0" skinName="NiuniuYZBtnSkin"/>
+		<e:Button id="btn2" label="" scaleX="1" scaleY="1" x="250" y="0" skinName="NiuniuYZBtnSkin"/>
+		<e:Button id="btn3" label="" scaleX="1" scaleY="1" x="376" y="0" skinName="NiuniuYZBtnSkin"/>
+		<e:Button id="btn4" label="" scaleX="1" scaleY="1" x="502" y="0" skinName="NiuniuYZBtnSkin"/>
+	</e:Group>
+</e:Skin>

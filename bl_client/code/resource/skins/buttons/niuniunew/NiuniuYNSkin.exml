@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuYNSkin" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="nns_btn1_png"/>
+	<e:BitmapLabel font="nns_btnzi_fnt" text="有牛" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LogoSceneSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Rect left="0" top="0" right="0" bottom="0"/>
+	<e:Image source="loadingbar1_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image id="progressBar" source="loadingbar2_png" fillMode="clip" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image id="tipLabel" source="loadingtext_png" y="446.33" anchorOffsetX="81.33" anchorOffsetY="9.33" horizontalCenter="1"/>nchorOffsetY="0" height="103"/>
+</e:Skin>

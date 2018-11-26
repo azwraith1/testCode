@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NiuniuQZSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="ming" source="nns_btn1_png"/>
+	<e:Image id="an" source="nns_zhbtn_png" visible="false"/>
+	<e:Label text="" fontFamily="SimHei" stroke="2" strokeColor="0xa7621e" y="12" horizontalCenter="0"/>
+	<e:BitmapLabel id="labelDisplay" text="抢 x 4" font="nns_btnzi_fnt" horizontalCenter="0" verticalCenter="0" letterSpacing="-4"/>
+</e:Skin>
