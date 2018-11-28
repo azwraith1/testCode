@@ -1,0 +1,12 @@
+{
+    "16753cbc2fc": {
+        "path": "game\\GameMain.ts",
+        "class": "GameMain",
+        "parentPath": ""
+    },
+    "1675846e319": {
+        "path": "game\\scjump\\jumpjump.ts",
+        "class": "jumpjump",
+        "parentPath": ""
+    }
+}

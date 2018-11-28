@@ -1,0 +1,26 @@
+{
+	"initial": [
+		"libs/modules/egret/egret.js",
+		"libs/modules/egret/egret.web.js",
+		"libs/modules/eui/eui.js",
+		"libs/modules/assetsmanager/assetsmanager.js",
+		"libs/modules/tween/tween.js",
+		"libs/modules/game/game.js",
+		"libs/modules/promise/promise.js"
+	],
+	"game": [
+		"bin-debug/game/wxz/HotDogPool.js",
+		"bin-debug/game/ObjectPool.js",
+		"bin-debug/Main.js",
+		"bin-debug/Platform.js",
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/game/CONST.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/game/scjump/HotDogJumpPool.js",
+		"bin-debug/game/scjump/jumpjump.js",
+		"bin-debug/game/scjump/SCjumpPool.js",
+		"bin-debug/game/wxz/GameMain.js",
+		"bin-debug/AssetAdapter.js",
+		"bin-debug/game/wxz/SCPool.js"
+	]
+}

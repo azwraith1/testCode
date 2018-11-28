@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameMainSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="16753cbc2fc" ></w:Config>
+	<e:Image x="0" y="0" source="bg_png" width="720" height="1280"/>
+	<e:Rect width="720" height="1280" x="0" y="0" fillColor="0xffffff"/>
+	<e:Image source="hotDog_3_png" x="0" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" y="0"/>
+	<e:Label id="scoreLabel" text="" x="83.33" y="166.82" anchorOffsetX="0" width="148.43" anchorOffsetY="0" height="66.36" textColor="0x000000" verticalAlign="middle" textAlign="left" size="38"/>
+	<e:Group id="topGroup" width="83.33" height="100" x="0" y="150" anchorOffsetX="0">
+		<e:Image source="hotDog_2_png" horizontalCenter="-23.5" verticalCenter="0"/>
+		<e:Label text="X" x="48" width="50" verticalCenter="0" height="40" textColor="0x020000" verticalAlign="middle"/>
+	</e:Group>
+</e:Skin>
