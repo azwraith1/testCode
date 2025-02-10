@@ -1,1318 +1,1053 @@
-/// <reference path='./electron.d.ts'/>
+/**
+ * Cocos Creator 编辑器模块
+ * @author 陈皮皮（ifaswind）
+ * @version 20210312
+ * @see https://gitee.com/ifaswind/eazax-ccc/blob/master/declarations/editor.d.ts
+ */
+declare module Editor {
 
-/// <reference types='node' />
-/// <reference path='./extension.d.ts'/>
+    /**
+     * Log the normal message and show on the console. The method will send ipc message editor:console-log to all windows.
+     * @param args Whatever arguments the message needs
+     */
+    function log(...args: any): void;
 
-import * as NodeJSPath from 'path';
-import { FileFilter, BrowserWindow, OpenDialogReturnValue, SaveDialogReturnValue, MessageBoxReturnValue } from 'electron';
-import { ChildProcess } from 'child_process';
+    /**
+     * Log the normal message and show on the console. The method will send ipc message editor:console-log to all windows.
+     * @param args Whatever arguments the message needs
+     */
+    function info(...args: any): void;
 
-declare global {
-    export namespace Editor {
-        export namespace App {
-            export const userAgent: string;
-            /**
-             * 是否是开发模式
-             * Development mode
-             */
-            export const dev: boolean;
-            /**
-             * 编辑器启动参数
-             * Editor startup parameters
-             */
-            export const args: {[key: string]: any};
-            /**
-             * 编辑器版本号
-             * Editor version
-             */
-            export const version: string;
-            /**
-             * 主目录
-             * Home directory
-             */
-            export const home: string;
-            /**
-             * 编辑器程序文件夹
-             * Program folder
-             */
-            export const path: string;
-            /**
-             * 获取当前编辑器的临时缓存目录
-             * Temporary cache directory
-             */
-            export const temp: string;
-            /**
-             * 获取当前编辑器 icon 地址
-             * Gets the icon address of the current editor
-             */
-            export const icon: string;
-            /**
-             * 获取当前编辑器使用的 url 地址
-             * Gets the URL used by the current editor
-             */
-            export const urls: {
-                manual: string;
-                api: string;
-                forum: string;
-            };
-            /**
-             * 退出程序
-             * Exit the program
-             */
-            export function quit(): void;
-        }
-        export namespace Clipboard {
-            export type ICopyType = 'image' | 'text' | 'files' | string;
-            /**
-             * 获取剪贴板内容
-             * @param type
-             */
-            export function read(type: ICopyType): any;
-            /**
-             * 写入剪贴板内容
-             * @param type
-             * @param value
-             */
-            export function write(type: 'image', value: string): boolean;
-            export function write(type: 'text', value: string): boolean;
-            export function write(type: 'files', value: FileList): boolean;
-            export function write(type: string, value: any): boolean;
+    /**
+     * Log the warnning message and show on the console, it also shows the call stack start from the function call it. The method will send ipc message editor:console-warn to all windows.
+     * @param args Whatever arguments the message needs
+     */
+    function warn(...args: any): void;
+
+    /**
+     * Log the error message and show on the console, it also shows the call stack start from the function call it. The method will sends ipc message editor:console-error to all windows.
+     * @param args Whatever arguments the message needs
+     */
+    function error(...args: any): void;
+
+    /**
+     * Log the success message and show on the console The method will send ipc message editor:console-success to all windows.
+     * @param args Whatever arguments the message needs
+     */
+    function success(...args: any): void;
+
+    /**
+     * Require the module by Editor.url. This is good for module exists in package, since the absolute path of package may be variant in different machine.
+     * @param url 
+     */
+    function require(url: string): any;
+
+    /**
+     * Returns the file path (if it is registered in custom protocol) or url (if it is a known public protocol).
+     * @param url 
+     * @param encode 
+     */
+    function url(url: string, encode?: string): string;
+
+    function T(key: string): string;
+
+}
+
+declare module Editor {
+    readonly let appPath: string;
+    readonly let frameworkPath: string;
+    readonly let importPath: string;
+    readonly let isWin32: boolean;
+    readonly let isDarwin: boolean;
+    readonly let lang: string;
+    readonly let libraryPath: string;
+    readonly let sceneScripts: { [packageName: string]: string };
+}
+
+declare module Editor {
+
+    /**
+     * 渲染进程
+     */
+    module RendererProcess {
+
+        /**
+        * AssetDB singleton class in renderer process, you can access the instance with `Editor.assetdb`.
+        */
+        class AssetDB {
 
             /**
-             * 判断当前剪贴板内是否是指定类型
-             * @param type
+             * The remote AssetDB instance of main process, same as `Editor.remote.assetdb`.
              */
-            export function has(type: ICopyType): boolean;
-            /**
-             * 清空剪贴板
-             */
-            export function clear(): void;
-        }
-        export namespace Dialog {
-            
-            export interface SaveDialogOptions {
-                title?: string;
-                path?: string;
-                button?: string;
-                filters?: FileFilter[];
-            }
-            export interface SelectDialogOptions {
-                title?: string;
-                path?: string;
-                type?: 'directory' | 'file';
-                button?: string;
-                multi?: boolean;
-                filters?: FileFilter[];
-                extensions?: string;
-            }
-            export interface MessageDialogOptions {
-                title?: string;
-                detail?: string;
-                default?: number;
-                cancel?: number;
-                checkboxLabel?: string;
-                checkboxChecked?: boolean;
-                buttons?: string[];
-            }
+            readonly remote: Remote;
 
             /**
-             * 选择文件弹窗
-             * Select the file popover
-             *
-             * @param options 选择弹窗参数 Select popover parameters
-             * @param window 依附于哪个窗口（插件主进程才可使用） Which window it is attached to (only available to the plugin's main process)
+             * The library path.
              */
-            export function select(options?: SelectDialogOptions, window?: BrowserWindow): Promise<OpenDialogReturnValue>;
-            /**
-             * 保存文件弹窗
-             * Save the file popup
-             *
-             * @param options 保存文件窗口参数 Save the file window parameters
-             * @param window 依附于哪个窗口（插件主进程才可使用） Which window it is attached to (only available to the plugin's main process)
-             */
-            export function save(options?: SaveDialogOptions, window?: BrowserWindow): Promise<SaveDialogReturnValue>;
-            /**
-             * 信息弹窗
-             * Information popup window
-             *
-             * @param message 显示的消息 Displayed message
-             * @param options 信息弹窗可选参数 Information popup optional parameter
-             * @param window 依附于哪个窗口（插件主进程才可使用） Which window it is attached to (only available to the plugin's main process)
-             */
-            export function info(message: string, options?: MessageDialogOptions, window?: BrowserWindow): Promise<MessageBoxReturnValue>;
-            /**
-             * 警告弹窗
-             * Warning popup
-             *
-             * @param message 警告信息 Warning message
-             * @param options 警告弹窗可选参数 Warning popover optional parameter
-             * @param window 依附于哪个窗口（插件主进程才可使用） Which window it is attached to (only available to the plugin's main process)
-             */
-            export function warn(message: string, options?: MessageDialogOptions, window?: BrowserWindow): Promise<MessageBoxReturnValue>;
-            /**
-             * 错误弹窗
-             * Error popup window
-             *
-             * @param message 错误信息 The error message
-             * @param options 错误弹窗可选参数 Error popover optional parameter
-             * @param window 依附于哪个窗口（插件主进程才可使用） Which window it is attached to (only available to the plugin's main process)
-             */
-            export function error(message: string, options?: MessageDialogOptions, window?: BrowserWindow): Promise<MessageBoxReturnValue>;
-        }
-        export namespace EditMode {
-            /**
-             * 标记编辑器进入了一种编辑模式
-             * The tag editor goes into an edit mode
-             *
-             * @param mode 编辑模式的名字 The name of the edit mode
-             */
-            export function enter(mode: string);
-            /**
-             * 当前所处的编辑模式
-             * The current editing mode
-             *
-             */
-            export function getMode(): string;
-        }
-        export namespace I18n {
-            export type I18nMap = {
-                [key: string]: I18nMap | string;
-            };
-            /**
-             * 获取当前的语言 zh | en
-             * Get the current language
-             */
-            export function getLanguage(): string;
-            /**
-             * 传入 key，翻译成当前语言
-             * Passing in the key translates into the current language
-             * 允许翻译变量 {a}，传入的第二个参数 obj 内定义 a
-             * The translation variable {a} is allowed, and a is defined in the second argument passed in obj
-             *
-             * @param key 用于翻译的 key 值 The key value for translation
-             * @param obj 翻译字段内如果有 {key} 等可以在这里传入替换字段 If you have {key} in the translation field, you can pass in the replacement field here
-             */
-            export function t(
-                key: string,
-                obj?: {
-                    [key: string]: string;
-                },
-            ): string;
+            readonly library: string;
 
             /**
-             * 选择一种翻译语言
-             * Choose a translation language
-             *
-             * @param language 选择当前使用的语言 Select the language currently in use
+             * Reveal given url in native file system.
+             * @param url 
              */
-            export function select(language: string): void;
-        }
-        export namespace Layout {
-            interface ILayoutItem {
-                'min-width': number;
-                'min-height': number;
-                direction: 'row' | 'column' | 'none';
-                percent: number;
-                minimize: boolean;
-                children?: ILayoutItem[];
-                active?: string;
-                panels?: string[];
-            }
-            
-            export interface ILayout {
-                version: 1;
-                layout: ILayoutItem;
-            }
-            /**
-             * 应用布局信息
-             * Application layout information
-             *
-             * @param json 布局文件内容 Layout file content
-             */
-            export function apply(json: any);
-            /**
-             * 查询当前的布局信息，返回一个布局 json 对象
-             * Query the current layout information and return a layout json object
-             * 
-             * @param name 
-             */
-            export function query(name?: string): Promise<ILayout>;
-        }
-        export namespace Logger {
-            /**
-             * 清空所有的日志
-             * Clear all logs
-             */
-            export function clear(regexp?: string | RegExp): any;
-            /**
-             * 查询所有日志
-             * Query all logs
-             */
-            export function query(): any;
-        }
-        export namespace Menu {
-            export interface BaseMenuItem {
-                template?: string;
-                type?: string;
-                label?: string;
-                sublabel?: string;
-                visible?: boolean;
-                checked?: boolean;
-                enabled?: boolean;
-                icon?: string;
-                accelerator?: string;
-                order?: number;
-                group?: string;
-                message?: string;
-                target?: string;
-                params?: any[];
-                click?: Function | null;
-                role?: string;
-                submenu?: MenuTemplateItem[];
-            }
-            export interface MainMenuItem extends BaseMenuItem {
-                path: string;
-            }
-            export interface ContextMenuItem extends BaseMenuItem {
-                accelerator?: string;
-            }
-            export type MenuTemplateItem = BaseMenuItem;
-            export interface PopupOptions {
-                x?: number;
-                y?: number;
-                menu: ContextMenuItem[];
-            }
-            /**
-             * 右键弹窗
-             * Right-click pop-up
-             * 只有面板进程可以使用
-             * Only panel processes can be used
-             *
-             * @param json
-             */
-            export function popup(json: PopupOptions): any;
-        }
-        export namespace Message {
-            export interface MessageInfo {
-                methods: string[];
-                public?: boolean;
-                description?: string;
-                doc?: string;
-                sync?: boolean;
-            }
+            explore(url: string): string;
 
-            export interface TableBase {
-                [x: string]: any;
-                params: any[];
-            }
             /**
-             * 发送一个消息，并等待返回
-             * Send a message and wait for it to return
-             *
-             * @param name 目标插件的名字 The name of the target plug-in
-             * @param message 触发消息的名字 The name of the trigger message
-             * @param args 消息需要的参数 The parameters required for the message
+             * Reveal given url's library file in native file system.
+             * @param url 
              */
-            export function request<J extends string, K extends keyof EditorMessageMaps[J]>(
-                name: J,
-                message: K,
-                ...args: EditorMessageMaps[J][K]['params']
-            ): Promise<EditorMessageMaps[J][K]['result']>;
+            exploreLib(url: string): string;
+
             /**
-             * 发送一个消息，没有返回
-             * Send a message, no return
-             *
-             * @param name 目标插件的名字 The name of the target plug-in
-             * @param message 触发消息的名字 The name of the trigger message
-             * @param args 消息需要的参数 The parameters required for the message
+             * Get native file path by url.
+             * @param url 
+             * @param cb The callback function.
              */
-            export function send<M extends string, N extends keyof EditorMessageMaps[M]>(
-                name: M,
-                message: N,
-                ...args: EditorMessageMaps[M][N]['params']
-            ): void;
+            queryPathByUrl(url: string, cb?: (err: any, path: any) => void): void;
+
             /**
-             * 广播一个消息
-             * Broadcast a message
-             *
-             * @param message 消息的名字 Name of message
-             * @param args 消息附加的参数 Parameter attached to the message
+             * Get uuid by url.
+             * @param url 
+             * @param cb The callback function.
              */
-            export function broadcast(message: string, ...args: any[]): void;
+            queryUuidByUrl(url: string, cb?: (err: any, uuid: any) => void): void;
+
             /**
-             * 新增一个广播消息监听器
-             * Add a new broadcast message listener
-             * 不监听的时候，需要主动取消监听
-             * When not listening, you need to take the initiative to cancel listening
-             *
-             * @param message 消息名 Message name
-             * @param func 处理函数 The processing function
+             * Get native file path by uuid.
+             * @param uuid 
+             * @param cb The callback function.
              */
-            export function addBroadcastListener(message: string, func: Function): any;
+            queryPathByUuid(uuid: string, cb?: (err: any, path: any) => void): void;
+
             /**
-             * 新增一个广播消息监听器
-             * Removes a broadcast message listener
-             *
-             * @param message 消息名 Message name
-             * @param func 处理函数 The processing function
+             * Get asset url by uuid.
+             * @param uuid 
+             * @param cb The callback function.
              */
-            export function removeBroadcastListener(message: string, func: Function): any;
+            queryUrlByUuid(uuid: string, cb?: (err: any, url: any) => void): void;
+
+            /**
+             * Get asset info by uuid.
+             * @param uuid 
+             * @param cb The callback function.
+             */
+            queryInfoByUuid(uuid: string, cb?: (err: any, info: any) => void): void;
+
+            /**
+             * Get meta info by uuid.
+             * @param uuid 
+             * @param cb The callback function.
+             */
+            queryMetaInfoByUuid(uuid: string, cb?: (err: any, info: any) => void): void;
+
+            /**
+             * Query all assets from asset-db.
+             * @param cb The callback function.
+             */
+            deepQuery(cb?: (err: any, results: any[]) => void): void;
+
+            /**
+             * Query assets by url pattern and asset-type.
+             * @param pattern The url pattern.
+             * @param assetTypes The asset type(s).
+             * @param cb The callback function.
+             */
+            queryAssets(pattern: string, assetTypes: string | string[], cb?: (err: any, results: any[]) => void): void;
+
+            /**
+             * Import files outside asset-db to specific url folder. 
+             * @param rawfiles Rawfile path list.
+             * @param destUrl The url of dest folder.
+             * @param showProgress Show progress or not.
+             * @param cb The callbak function.
+             */
+            import(rawfiles: string[], destUrl: string, showProgress?: boolean, cb?: (err: any, result: any) => void): void;
+
+            /**
+             * Create asset in specific url by sending string data to it.
+             * @param uuid 
+             * @param metaJson 
+             * @param cb the callback function.
+             */
+            create(url: string, data: string, cb?: (err: any, result: any) => void): void;
+
+            /**
+             * Move asset from src to dest.
+             * @param srcUrl 
+             * @param destUrl 
+             * @param showMessageBox 
+             */
+            move(srcUrl: string, destUrl: string, showMessageBox?: boolean): void;
+
+            /**
+             * Delete assets by url list.
+             * @param urls 
+             */
+            delete(urls: string[]): void;
+
+            /**
+             * Save specific asset by sending string data.
+             * @param url 
+             * @param data 
+             * @param cb the callback function.
+             */
+            saveExists(url: string, data: string, cb?: (err: any, result: any) => void): void;
+
+            /**
+             * Create or save assets by sending string data. If the url is already existed, it will be changed with new data. The behavior is same with method saveExists. Otherwise, a new asset will be created. The behavior is same with method create.
+             * @param url 
+             * @param data 
+             * @param cb the callback function.
+             */
+            createOrSave(url: string, data: string, cb?: (err: any, result: any) => void): void;
+
+            /**
+             * Save specific meta by sending meta's json string.
+             * @param uuid 
+             * @param metaJson 
+             * @param cb the callback function.
+             */
+            saveMeta(uuid: string, metaJson: string, cb?: (err: any, result: any) => void): void;
+
+            /**
+             * Refresh the assets in url, and return the results.
+             * @param url 
+             * @param cb 
+             */
+            refresh(url: string, cb?: (err: any, results: any[]) => void): void;
+
         }
-        export namespace Network {
+
+    }
+
+    /**
+     * 主进程
+     */
+    module MainProcess {
+
+        /**
+         * AssetDB singleton class in main process, you can access the instance with `Editor.assetdb`.
+         */
+        class AssetDB {
+
             /**
-             * 查询当前电脑的 ip 列表
-             * Query the IP list of the current computer
+             * Return uuid by url. If uuid not found, it will return null.
+             * @param url 
              */
-            export function queryIPList(): string[];
+            urlToUuid(url: string): string;
+
             /**
-             * 测试是否可以联通 passport.cocos.com 服务器
-             * Test whether you can connect to the passport.cocos.com server
+             * Return uuid by file path. If uuid not found, it will return null.
+             * @param fspath 
              */
-            export function testConnectServer(): Promise<boolean>;
+            fspathToUuid(fspath: string): string;
+
             /**
-             * 检查一个端口是否被占用
-             * Checks if a port is used
-             *
-             * @param port
+             * Return file path by uuid. If file path not found, it will return null.
+             * @param url 
              */
-            export function portIsOccupied(port: number): Promise<boolean>;
+            uuidToFspath(url: string): string;
+
             /**
-             * 测试是否可以联通某一台主机
-             * Test whether a host can be connected
-             *
-             * @param ip
+             * Return url by uuid. If url not found, it will return null.
+             * @param uuid 
              */
-            export function testHost(ip: string): Promise<boolean>;
+            uuidToUrl(uuid: string): string;
+
             /**
-             * Get 方式请求某个服务器数据
-             * GET requests data from a server
-             *
+             * Return url by file path. If file path not found, it will return null.
+             * @param fspath 
+             */
+            fspathToUrl(fspath: string): string;
+
+            /**
+             * Return file path by url. If url not found, it will return null.
+             * @param url 
+             */
+            urlToFspath(url: string): string;
+
+            /**
+             * Check existance by url.
+             * @param url 
+             */
+            exists(url: string): string;
+
+            /**
+             * Check existance by uuid.
+             * @param uuid 
+             */
+            existsByUuid(uuid: string): string;
+
+            /**
+             * Check existance by path.
+             * @param fspath 
+             */
+            existsByPath(fspath: string): string;
+
+            /**
+             * Check whether asset for a given url is a sub asset.
+             * @param url 
+             */
+            isSubAsset(url: string): boolean;
+
+            /**
+             * Check whether asset for a given uuid is a sub asset.
+             * @param uuid 
+             */
+            isSubAssetByUuid(uuid: string): boolean;
+
+            /**
+             * Check whether asset for a given path is a sub asset.
+             * @param fspath 
+             */
+            isSubAssetByPath(fspath: string): boolean;
+
+            /**
+             * Check whether asset contains sub assets for a given url.
              * @param url
-             * @param data
              */
-            export function get(
-                url: string,
-                data?: {
-                    [index: string]: string | string[];
-                },
-            ): Promise<Buffer>;
-            /**
-             * Post 方式请求某个服务器数据
-             * POST requests data from a server
-             *
-             * @param url
-             * @param data
-             */
-            export function post(
-                url: string,
-                data?: {
-                    [index: string]: string | number | string[];
-                },
-            ): Promise<Buffer>;
-            /**
-             * 获取某个可用的端口号
-             * get the port that is free
-             *
-             * @param port
-             */
-            export function getFreePort(port: number): Promise<number>;
-        }
-        export namespace Package {
-            // export module VERSION: string;
-            export interface IGetPackageOptions {
-                name?: string;
-                debug?: boolean;
-                path?: string;
-                enable?: boolean;
-                invalid?: boolean;
-            }
-            export interface PackageJson {
-                author?: string;
-                debug?: boolean;
-                description?: string;
-                main?: string;
-                menu?: any;
-                name: string;
-                version: string;
-                windows: string;
-                editor?: string;
-                panel?: any;
-            }
-            export type PathType = 'home' | 'data' | 'temp';
-            /**
-             * 查询插件列表
-             * Query Plug-in List
-             *
-             * @param options
-             */
-            export function getPackages(options?: IGetPackageOptions): Editor.Interface.PackageInfo[];
-            /**
-             * 注册一个插件
-             * Register a plug-in
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             *
-             * @param path
-             */
-            export function register(path: string): any;
-            /**
-             * 反注册一个插件
-             * Unregister a plug-in
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             *
-             * @param path
-             */
-            export function unregister(path: string): any;
-            /**
-             * 启动一个插件
-             * Enable a plug-in
-             *
-             * @param path
-             */
-            export function enable(path: string): any;
-            /**
-             * 关闭一个插件
-             * Disable a plug-in
-             *
-             * @param path
-             */
-            export function disable(path: string, options: any): any;
-            /**
-             * 获取一个插件的几个预制目录地址
-             * Gets several prefab directory addresses for a plug-in
-             *
-             * @param extensionName 扩展的名字 Name of the extension
-             * @param type 地址类型（temp 临时目录，data 需要同步的数据目录,不传则返回现在打开的插件路径） Address type (temp temporary directory, data need to synchronize data directory, do not pass to return the current open plug-in path)
-             */
-            export function getPath(extensionName: string): string | undefined;
-        }
-        export namespace Panel {
-            /**
-             * 打开一个面板
-             * Open up a panel
-             *
-             * @param name
-             * @param args
-             */
-            export function open(name: string, ...args: any[]): any;
-            /**
-             * 关闭一个面板
-             * Close a panel
-             *
-             * @param name
-             */
-            export function close(name: string): any;
-            /**
-             * 将焦点传递给一个面板
-             * Pass focus to a panel
-             *
-             * @param name
-             */
-            export function focus(name: string): any;
-            /**
-             * 检查面板是否已经打开
-             * Check that the panel is open
-             *
-             * @param name
-             */
-            export function has(name: string): Promise<boolean>;
-            /**
-             * 查询当前窗口里某个面板里的元素列表
-             * @param name
-             * @param selector
-             */
-            export function querySelector(name: string, selector: string): Promise<any>;
+            containsSubAssets(url: string): boolean;
 
-            export type Selector<$> = { $: Record<keyof $, HTMLElement | null> };
-
-            export type Options<S, M, U extends (...args: any[]) => void> = {
-                /**
-                 * @en Listening to panel events
-                 * @zh 监听面板事件
-                 */
-                listeners?: {
-                    /**
-                     * @en Hooks triggered when the panel is displayed
-                     * @zh 面板显示的时候触发的钩子
-                     */
-                    show?: () => any;
-                    /**
-                     * @en Hooks triggered when the panel is hidden
-                     * @zh 面板隐藏的时候触发的钩子
-                     */
-                    hide?: () => any;
-                };
-
-                /**
-                 * @en Template of the panel
-                 * @zh 面板的内容
-                 */
-                template: string;
-                /**
-                 * @en Style of the panel
-                 * @zh 面板上的样式
-                 * */
-                style?: string;
-                /**
-                 * @en Selector of the panel
-                 * @zh 快捷选择器
-                 */
-                $?: S;
-                /**
-                 * @en Panel built-in function methods that can be called in Messages, Listeners, lifecycle functions
-                 * @zh panel 内置的函数方法，可以在 messages、listeners、生命周期函数内调用
-                 */
-                methods?: M;
-                /**
-                 * @en Hooks triggered when the panel is update
-                 * @zh 面板数据更新后触发的钩子函数
-                 */
-                update?: (...args: Parameters<U>) => void;
-                /**
-                 * @en Hooks triggered when the panel is ready
-                 * @zh 面板启动后触发的钩子函数
-                 */
-                ready?: () => void;
-                /**
-                 * @en The function that will be triggered when the panel is ready to close, and will terminate the closing of the panel if it
-                 * returns false
-                 * @zh 面板准备关闭的时候会触发的函数，return false 的话，会终止关闭面板
-                 * 生命周期函数，在 panel 准备关闭的时候触发
-                 * 如果 return false，则会中断关闭流程,请谨慎使用，错误的判断会导致编辑器无法关闭。
-                 */
-                beforeClose?: () => Promise<boolean | void> | boolean | void;
-                /**
-                 * @en Hook functions after panel closure
-                 * @zh 面板关闭后的钩子函数
-                 */
-                close?: () => void;
-            } & ThisType<Selector<S> & M>; // merge them together
-
-            export function define<U extends (...args: any[]) => void, Selector = Record<string, string>, M = Record<string, Function>>(
-                options: Options<Selector, M, U>,
-            ): any;
-        }
-        export namespace Profile {
-            export type preferencesProtocol = 'default' | 'global' | 'local';
-            export type projectProtocol = 'default' | 'project';
-            export type tempProtocol = 'temp';
-            export interface ProfileGetOptions {
-                type: 'deep' | 'current' | 'inherit';
-            }
-            export interface ProfileObj {
-                get: (key?: string, options?: ProfileGetOptions) => any;
-                set: (key?: string, value?: any) => any;
-                remove: (key: string) => void;
-                save: () => void;
-                clear: () => void;
-                reset: () => void;
-            }
             /**
-             * 读取插件配置
-             * Read the plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param type 配置的类型，选填 Type of configuration, optional(global,local,default)
-             */
-            export function getConfig(name: string, key?: string, type?: preferencesProtocol): Promise<any>;
-            /**
-             * 设置插件配置
-             * Set the plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param value 配置的值 The value of the configuration
-             * @param type 配置的类型，选填 Type of configuration, optional(global,local,default)
-             */
-            export function setConfig(name: string, key: string, value: any, type?: preferencesProtocol): Promise<void>;
-            /**
-             * 删除某个插件配置
-             * Delete a plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param type 配置的类型，选填 Type of configuration, optional(global,local,default)
-             */
-            export function removeConfig(name: string, key: string, type?: preferencesProtocol): Promise<void>;
-            /**
-             * 读取插件内的项目配置
-             * Read the project configuration within the plug-in
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param type 配置的类型，选填 Type of configuration, optional(project,default)
-             */
-            export function getProject(name: string, key?: string, type?: projectProtocol): Promise<any>;
-            /**
-             * 设置插件内的项目配置
-             * Set the project configuration within the plug-in
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param value 配置的值 The value of the configuration
-             * @param type 配置的类型，选填 Type of configuration, optional(project,default)
-             */
-            export function setProject(name: string, key: string, value: any, type?: projectProtocol): Promise<void>;
-            /**
-             * 删除插件内的项目配置
-             * Delete the project configuration within the plug-in
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param type 配置的类型，选填 Type of configuration, optional(project,default)
-             */
-            export function removeProject(name: string, key: string, type?: projectProtocol): Promise<void>;
-            /**
-             * 读取插件配置
-             * Read the plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             */
-            export function getTemp(name: string, key?: string): Promise<any>;
-            /**
-             * 设置插件配置
-             * Set the plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             * @param value 配置的值 The value of the configuration
-             */
-            export function setTemp(name: string, key: string, value: any): Promise<void>;
-            /**
-             * 删除某个插件配置
-             * Delete a plug-in configuration
-             *
-             * @param name 插件名 The plugin name
-             * @param key 配置路径 Configure path
-             */
-            export function removeTemp(name: string, key: string): Promise<void>;
-            /**
-             * 迁移插件某个版本的本地配置数据到编辑器最新版本
-             * Migrate the local configuration data of a certain version of the plugin to the latest version of the editor
-             *
-             * @param pkgName
-             * @param profileVersion
-             * @param profileData
-             */
-            export function migrateLocal(pkgName: string, profileVersion: string, profileData: any): any;
-            /**
-             * 迁移插件某个版本的全局配置数据到编辑器最新版本
-             * Migrate the global configuration data of a certain version of the plugin to the latest version of the editor
-             *
-             * @param pkgName
-             * @param profileVersion
-             * @param profileData
-             */
-            export function migrateGlobal(pkgName: string, profileVersion: string, profileData: any): any;
-            /**
-             * 迁移插件某个版本的项目配置数据到编辑器最新版本
-             * Migrate the project configuration data of a certain version of the plugin to the latest version of the editor
-             *
-             * @param pkgName
-             * @param profileVersion
-             * @param profileData
-             */
-            export function migrateProject(pkgName: string, profileVersion: string, profileData: any): any;
-        }
-        export namespace Project {
-            /**
-             * 创建一个项目
-             * Creating a project
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export function create(): any;
-            /**
-             * 打开一个项目
-             * Open a project
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             *
-             * @param path
-             */
-            export function open(path?: string): Promise<any>;
-            /**
-             * 添加一个项目
-             * Add a project
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             *
-             * @param path
-             */
-            export function add(path: string): any;
-            /**
-             * 当前项目路径
-             * Current project path
-             */
-            export const path: string;
-            /**
-             * 当前项目 uuid
-             * The current project UUID
-             */
-            export const uuid: string;
-            /**
-             * 当前项目名称(取自 package.json)
-             * The current project name
-             */
-            export const name: string;
-            /**
-             * 当前项目临时文件夹
-             * Temporary folder for current project
-             */
-            export const tmpDir: string;
-            /**
-             * 当前项目类型
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export const type: '2d' | '3d';
-        }
-        export namespace Selection {
-            /**
-             * 选中一个或者一组元素
-             * Select one or a group of elements
-             *
-             * @param type
+             * Check whether asset contains sub assets for a given uuid.
              * @param uuid
              */
-            export function select(type: string, uuid: string | string[]): any;
-            /**
-             * 取消一个或者一组元素的选中状态
-             * To deselect one or a group of elements
-             *
-             * @param type
-             * @param uuid
-             */
-            export function unselect(type: string, uuid: string | string[]): any;
-            /**
-             * 清空一个类型的所有选中元素
-             * Clears all selected elements of a type
-             *
-             * @param type
-             */
-            export function clear(type: string): any;
-            /**
-             * 更新当前选中的类型数据
-             * Updates the currently selected type data
-             *
-             * @param type
-             * @param uuids
-             */
-            export function update(type: string, uuids: string[]): any;
-            /**
-             * 悬停触碰了某个元素
-             * Hover touches an element
-             * 会发出 selection:hover 的广播消息
-             * A broadcast message for selection:hover is issued
-             *
-             * @param type
-             * @param uuid
-             */
-            export function hover(type: string, uuid?: string): any;
-            /**
-             * 获取最后选中的元素的类型
-             * Gets the type of the last selected element
-             */
-            export function getLastSelectedType(): string;
-            /**
-             * 获取某个类型内，最后选中的元素
-             * Gets the last selected element of a type
-             *
-             * @param type
-             */
-            export function getLastSelected(type: string): string;
-            /**
-             * 获取一个类型选中的所有元素数组
-             * Gets an array of all elements selected for a type
-             *
-             * @param type
-             */
-            export function getSelected(type: string): string[];
-        }
-        export namespace Task {
-            export interface NoticeOptions {
-                title: string;
-                message?: string;
-                type?: 'error' | 'warn' | 'log' | 'success';
-                source?: string;
-                timeout?: number;
-            }
-            /**
-             * 添加一个同步任务
-             * Add a synchronous task
-             * 会在主窗口显示一个遮罩层
-             * A mask layer is displayed in the main window
-             *
-             * @param title 任务名字 The task name
-             * @param describe 任务描述 Task description
-             * @param message 任务内容 Content of the task
-             */
-            export function addSyncTask(title: string, describe?: string, message?: string): any;
-            /**
-             * 更新某一个同步任务显示的数据
-             * Update the data displayed by a synchronous task
-             *
-             * @param title 任务名字 The task name
-             * @param describe 任务描述 Task description
-             * @param message 任务内容 Content of the task
-             */
-            export function updateSyncTask(title: string, describe?: string, message?: string): any;
-            /**
-             * 删除一个同步任务
-             * Delete a synchronous task
-             *
-             * @param title 任务的名字 The name of the task
-             */
-            export function removeSyncTask(title: string): any;
-            /**
-             * 添加一个通知
-             * Add a notification
-             *
-             * @param options 消息配置 Message configuration
-             * @return id 当前 notice ID，可用于查找移除
-             */
-            export function addNotice(options: NoticeOptions): number;
-            /**
-             * 删除一个通知
-             * Delete a notification
-             *
-             * @param id 通知 id Notification ID
-             */
-            export function removeNotice(id: number): any;
-            /**
-             * 修改 notice 自动移除的时间
-             * Modify notice automatic removal time
-             *
-             * @param id 通知 id Notification ID
-             * @param time 超时时间 timeout
-             */
-            export function changeNoticeTimeout(id: number, time: number): any;
-            /**
-             * 查询所有通知
-             * Query all notifications
-             */
-            export function queryNotices(): any;
-            /**
-             * 页面进程立即同步一次主进程数据
-             * The page process synchronizes the master process data immediately
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export function sync(): any;
-        }
-        export namespace Theme {
-            /**
-             * 获取所有主题的名字
-             * Gets the names of all topics
-             */
-            export function getList(): any;
-            /**
-             * 使用某个皮肤
-             * Use a certain skin
-             *
-             * @param name
-             */
-            export function use(name?: string): any;
-        }
-        export namespace UI {
-            /**
-             * 在当前页面上注册一个自定义节点
-             * Registers a custom node on the current page
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             *
-             * @param tagName 元素名字
-             * @param element 元素的定义函数
-             */
-            export function register(tagName: string, element: any): void;
-            export const Base: any;
-            export const Button: any;
-            export const Input: any;
-            export const NumInput: any;
-            export const Loading: any;
-            export const Checkbox: any;
-            export const Section: any;
-            export const Select: any;
-            export const Bit: any;
-            export const Slider: any;
-            export const ColorPicker: any;
-            export const Color: any;
-            export const DragItem: any;
-            export const DragArea: any;
-            export const DragObject: any;
-            export const Prop: any;
-            export const Tooltip: any;
-            export const TextArea: any;
-            export const Progress: any;
-            export const Label: any;
-            export const Code: any;
-            export const Tab: any;
-            export const Gradient: any;
-            export const GradientPicker: any;
-            export const Icon: any;
-            export const File: any;
-            export const Link: any;
-            export const Image: any;
-            export const QRCode: any;
-            export const Markdown: any;
-            export const Curve: any;
-            export const CurveEditor: any;
-            export const NodeGraph: any;
-        }
-        export namespace User {
-            export interface UserData {
-                session_id: string;
-                session_key: string;
-                cocos_uid: string;
-                email: string;
-                nickname: string;
-            }
-            export interface UserTokenData {
-                access_token: string;
-                cocos_uid: number;
-                expires_in: number;
-            }
-            /**
-             * 跳过 User
-             * Skip the User
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export function skip(): any;
-            /**
-             * 获取 user 数据
-             * Get user data
-             */
-            export function getData(): Promise<UserData>;
-            /**
-             * 检查用户是否登录
-             * Check if the user is logged in
-             */
-            export function isLoggedIn(): Promise<boolean>;
-            /**
-             * 用户登录
-             * The user login
-             * 失败会抛出异常
-             * Failure throws an exception
-             *
-             * @param username
-             * @param password
-             */
-            export function login(username: string, password: string): Promise<UserData>;
-            /**
-             * 退出登录
-             * Logged out
-             * 失败会抛出异常
-             * Failure throws an exception
-             */
-            export function logout(): void;
-            /**
-             * 获取用户 token
-             * Get user token
-             * 失败会抛出异常
-             * Failure throws an exception
-             */
-            export function getUserToken(): Promise<UserTokenData>;
-            /**
-             * 根据插件 id 返回 session code
-             * Returns the session code based on the plug-in ID
-             *
-             * @param extensionId
-             */
-            export function getSessionCode(extensionId: number): Promise<string>;
-            /**
-             * 显示用户登录遮罩层
-             * Shows user login mask layer
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export function showMask(): void;
-            /**
-             * 隐藏用户登录遮罩层
-             * Hide user login mask layer
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             */
-            export function hideMask(): void;
-            /**
-             * 监听事件
-             * Listen for an event
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             * @param action
-             * @param handle
-             */
-            export function on(action: string, handle: Function): any;
-            /**
-             * 监听一次事件
-             * Listening for one event
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             * @param action
-             * @param handle
-             */
-            export function once(action: string, handle: Function): any;
-            /**
-             * 取消已经监听的事件
-             * Cancels the event you are listening for
-             * 谨慎使用，之后会被移除
-             * Use with caution and it will be removed later
-             * @param action
-             * @param handle
-             */
-            export function removeListener(action: string, handle: Function): any;
-        }
-        export namespace Utils {
-            export namespace File {
-                /**
-                 * 初始化一个可用的文件名
-                 * Initializes a available filename
-                 * 返回可用名称的文件路径
-                 * Returns the file path with the available name
-                 *
-                 * @param file 初始文件路径 Initial file path
-                 */
-                export function getName(file: string): string;
-                interface UnzipOptions {
-                    peel?: boolean;
-                }
-                /**
-                 * 解压文件夹
-                 * Unzip folder
-                 *
-                 * @param zip
-                 * @param target
-                 * @param options
-                 */
-                export function unzip(zip: string, target: string, options?: UnzipOptions): Promise<void>;
-                /**
-                 * 复制一个文件到另一个位置
-                 * Copy a file to another location
-                 *
-                 * @param source
-                 * @param target
-                 */
-                export function copy(source: string, target: string): void;
+            containsSubAssetsByUuid(uuid: string): boolean;
 
-                export function trashItem(path: string): Promise<void>;
-            }
-            export namespace Path {
-                /**
-                 * 返回一个不含扩展名的文件名
-                 * @param path
-                 */
-                export function basenameNoExt(path: string): string;
-                /**
-                 * 将 \ 统一换成 /
-                 * @param path
-                 */
-                export function slash(path: string): string;
-                /**
-                 * 去除路径最后的斜杆，返回一个不带斜杆的路径
-                 * @param path
-                 */
-                export function stripSep(path: string): string;
-                /**
-                 * 删除一个路径的扩展名
-                 * @param path
-                 */
-                export function stripExt(path: string): string;
-                /**
-                 * 判断路径 pathA 是否包含 pathB
-                 * pathA = foo/bar,         pathB = foo/bar/foobar, return true
-                 * pathA = foo/bar,         pathB = foo/bar,        return true
-                 * pathA = foo/bar/foobar,  pathB = foo/bar,        return false
-                 * pathA = foo/bar/foobar,  pathB = foobar/bar/foo, return false
-                 * @param pathA
-                 * @param pathB
-                 */
-                export function contains(pathA: string, pathB: string): boolean;
-                /**
-                 * 格式化路径
-                 * 如果是 Windows 平台，需要将盘符转成小写进行判断
-                 * @param path
-                 */
-                export function normalize(path: string): string;
-                export const join: typeof NodeJSPath.join;
-                export const resolve: typeof NodeJSPath.resolve;
-                export const isAbsolute: typeof NodeJSPath.isAbsolute;
-                export const relative: typeof NodeJSPath.relative;
-                export const dirname: typeof NodeJSPath.dirname;
-                export const basename: typeof NodeJSPath.basename;
-                export const extname: typeof NodeJSPath.extname;
-                export const sep: '\\' | '/';
-                export const delimiter: ';' | ':';
-                export const parse: typeof NodeJSPath.parse;
-                export const format: typeof NodeJSPath.format;
-            }
-            export namespace Math {
-                /**
-                 * 取给定边界范围的值
-                 * Take the value of the given boundary range
-                 * @param {number} val
-                 * @param {number} min
-                 * @param {number} max
-                 */
-                export function clamp(val: number, min: number, max: number): number;
-                /**
-                 * @function clamp01
-                 * @param {number} val
-                 * @returns {number}
-                 *
-                 * Clamps a value between 0 and 1.
-                 */
-                export function clamp01(val: number): number;
-                /**
-                 * 加法函数
-                 * 入参：函数内部转化时会先转字符串再转数值，因而传入字符串或 number 均可
-                 * 返回值：arg1 加上 arg2 的精确结果
-                 * @param {number|string} arg1
-                 * @param {number|string} arg2
-                 */
-                export function add(arg1: number | string, arg2: number | string): number;
-                /**
-                 * 减法函数
-                 * 入参：函数内部转化时会先转字符串再转数值，因而传入字符串或number均可
-                 * 返回值：arg1 减 arg2的精确结果
-                 * @param {number|string} arg1
-                 * @param {number|string} arg2
-                 */
-                export function sub(arg1: number | string, arg2: number | string): number;
-                /**
-                 * 乘法函数
-                 * 入参：函数内部转化时会先转字符串再转数值，因而传入字符串或 number 均可
-                 * 返回值：arg1 乘 arg2 的精确结果
-                 * @param {number} arg1
-                 * @param {number} arg2
-                 */
-                export function multi(arg1: number, arg2: number): number;
-                /**
-                 * 除法函数
-                 * 入参：函数内部转化时会先转字符串再转数值，因而传入字符串或 number 均可
-                 * 返回值：arg1 除 arg2 的精确结果
-                 * @param {number} arg1
-                 * @param {number} arg2
-                 */
-                export function divide(arg1: number, arg2: number): number;
-                /**
-                 * 保留小数点
-                 * @param val
-                 * @param num
-                 */
-                export function toFixed(val: number, num: number): number;
-            }
-            export namespace Parse {
-                interface WhenParam {
-                    PanelName?: string;
-                    EditMode?: string;
-                    ProjectType?: string;
-                }
-                /**
-                 * 解析 when 参数
-                 * when 的格式：
-                 *     PanelName === '' && EditMode === ''
-                 * 整理后的数据格式：
-                 *     {
-                 *         PanelName: '',
-                 *         EditMode: '',
-                 *     }
-                 */
-                export function when(when: string): WhenParam;
-                /**
-                 * 判断一个 when 数据是否符合当前条件
-                 * @param when
-                 */
-                export function checkWhen(when: string): boolean;
-            }
-            export namespace Url {
-                /**
-                 * 快捷获取文档路径
-                 * @param relativeUrl
-                 * @param type
-                 */
-                export function getDocUrl(relativeUrl: string, type?: 'manual' | 'api'): string;
-            }
-
-            export namespace UUID {
-                /**
-                 * 压缩 UUID
-                 * compress UUID
-                 * @param uuid
-                 * @param min
-                 */
-                export function compressUUID(uuid: string, min: boolean): string;
-                /**
-                 * 解压 UUID
-                 * decompress the UUID
-                 * @param str
-                 */
-                export function decompressUUID(str: string): string;
-                /**
-                 * 检查输入字符串是否是 UUID
-                 * Check whether the input string is a UUID
-                 * @param str
-                 */
-                export function isUUID(str: string): string;
-                /**
-                 * 生成一个新的 uuid
-                 * compress 是否压缩，默认 true
-                 */
-                export function generate(compress?: boolean): string;
-                /**
-                 * 从路径中提取 UUID
-                 * ".../5b/5b9cbc23-76b3-41ff-9953-4219fdbea72c/Fontin-SmallCaps.ttf" -> "5b9cbc23-76b3-41ff-9953-4219fdbea72c"
-                 */
-                export function getUuidFromLibPath(path: string): string;
-                /**
-                 * 获取子资源的短 uuid
-                 * @param name 
-                 */
-                export function nameToSubId(name: string): string;
-            }
-
-            export namespace Process {
-                export enum LogLevel {
-                    LOG,
-                    WARN,
-                    ERROR,
-                    NULL,
-                }
-                export interface IQuickSpawnOption {
-                    cwd?: string;
-                    env?: any;
-                    // 输出等级，默认 = 0，即 log 级别以上都打印
-                    logLevel?: LogLevel;
-                
-                    downGradeWaring?: boolean; // 警告将会转为 log 打印，默认为 false
-                    downGradeLog?: boolean; // log 将会转为 debug 打印，默认为 true
-                    downGradeError?: boolean; // 错误将会转为警告打印，默认为 false
-
-                    onlyPrintWhenError?: boolean; // 默认为 true, 日志都正常收集，但仅在发生错误时打印信息，其他时候静默处理
-
-                    prefix?: string; // 日志输出前缀
-                }
-                /**
-                 * 快速开启子进程，无需再自行监听输出，将会返回一个标记完成的 promise 对象
-                 * @param command 命令
-                 * @param cmdParams 参数数组
-                 * @param options 可选，开启的一些参数配置
-                 */
-                export function quickSpawn(command: string, cmdParams: string[], options?: IQuickSpawnOption):Promise<boolean>;
-            }
-        }
-        export namespace Module {
             /**
-             * 导入一个项目模块。
-             * @param url 项目模块的 Database URL。
-             * @experimental 实验性质。
+             * Check whether asset contains sub assets for a given path.
+             * @param fspath 
              */
-            export function importProjectModule(url: string): Promise<unknown>;
+            containsSubAssetsByPath(fspath: string): boolean;
+
+            /**
+             * Return asset info by a given url.
+             * @param url 
+             */
+            assetInfo(url: string): AssetInfo;
+
+            /**
+             * Return asset info by a given uuid.
+             * @param uuid 
+             */
+            assetInfoByUuid(uuid: string): AssetInfo;
+
+            /**
+             * Return asset info by a given file path.
+             * @param fspath 
+             */
+            assetInfoByPath(fspath: string): AssetInfo;
+
+            /**
+             * Return all sub assets info by url if the url contains sub assets.
+             * @param url 
+             */
+            subAssetInfos(url: string): AssetInfo[];
+
+            /**
+             * Return all sub assets info by uuid if the uuid contains sub assets.
+             * @param uuid 
+             */
+            subAssetInfosByUuid(uuid: string): AssetInfo[];
+
+            /**
+             * Return all sub assets info by path if the path contains sub assets.
+             * @param fspath 
+             */
+            subAssetInfosByPath(fspath: string): AssetInfo[];
+
+            /**
+             * Return meta instance by a given url.
+             * @param url 
+             */
+            loadMeta(url: string): MetaBase;
+
+            /**
+             * Return meta instance by a given uuid.
+             * @param uuid 
+             */
+            loadMetaByUuid(uuid: string): MetaBase;
+
+            /**
+             * Return meta instance by a given path.
+             * @param fspath 
+             */
+            loadMetaByPath(fspath: string): MetaBase;
+
+            /**
+             * Return whether a given url is reference to a mount.
+             * @param url 
+             */
+            isMount(url: string): boolean;
+
+            /**
+             * Return whether a given path is reference to a mount.
+             * @param fspath 
+             */
+            isMountByPath(fspath: string): boolean;
+
+            /**
+             * Return whether a given uuid is reference to a mount.
+             * @param uuid 
+             */
+            isMountByUuid(uuid: string): boolean;
+
+            /**
+             * Return mount info by url.
+             * @param url 
+             */
+            mountInfo(url: string): MountInfo;
+
+            /**
+             * Return mount info by uuid.
+             * @param uuid 
+             */
+            mountInfoByUuid(uuid: string): MountInfo;
+
+            /**
+             * Return mount info by path.
+             * @param fspath 
+             */
+            mountInfoByPath(fspath: string): MountInfo;
+
+            /**
+             * Mount a directory to assetdb, and give it a name. If you don't provide a name, it will mount to root.
+             * @param path file system path.
+             * @param mountPath the mount path (relative path).
+             * @param opts options.
+             * @param opts.hide if the mount hide in assets browser.
+             * @param opts.virtual if this is a virtual mount point.
+             * @param opts.icon icon for the mount.
+             * @param cb a callback function.
+             * @example Editor.assetdb.mount('path/to/mount', 'assets', function (err) {
+                            // mounted, do something ...
+                        });
+             */
+            mount(path: string, mountPath: string, opts: { hide: object, vitural: object, icon: object }, cb?: (err: any) => void): void;
+
+            /**
+             * Attach the specified mount path.
+             * @param mountPath the mount path (relative path).
+             * @param cb a callback function.
+             * @example Editor.assetdb.attachMountPath('assets', function (err, results) {
+                            // mount path attached, do something ...
+                            // results are the assets created
+                        });
+             */
+            attachMountPath(mountPath: string, cb?: (err: any, results: any[]) => void): void;
+
+            /**
+             * Unattach the specified mount path.
+             * @param mountPath the mount path (relative path).
+             * @param cb a callback function.
+             * @example Editor.assetdb.unattachMountPath('assets', function (err, results) {
+                            // mount path unattached, do something ...
+                            // results are the assets deleted
+                        });
+             */
+            unattachMountPath(mountPath: string, cb?: (err: any, results: any[]) => void): void;
+
+            /**
+             * Unmount by name.
+             * @param mountPath the mount path.
+             * @param cb a callback function.
+             * @example Editor.assetdb.unmount('assets', function (err) {
+                            // unmounted, do something ...
+                        });
+             */
+            unmount(mountPath: string, cb?: (err: any) => void): void;
+
+            /**
+             * Init assetdb, it will scan the mounted directories, and import unimported assets.
+             * @param cb a callback function.
+             * @example Editor.assetdb.init(function (err, results) {
+                            // assets that imported during init
+                            results.forEach(function (result) {
+                                // result.uuid
+                                // result.parentUuid
+                                // result.url
+                                // result.path
+                                // result.type
+                            });
+                        });
+             */
+            init(cb?: (err: any, results: any[]) => void): void;
+
+            /**
+             * Refresh the assets in url, and return the results.
+             * @param url 
+             * @param cb 
+             */
+            refresh(url: string, cb?: Function): void;
+
+            /**
+             * deepQuery
+             * @param cb 
+             * @example Editor.assetdb.deepQuery(function (err, results) {
+                          results.forEach(function (result) {
+                            // result.name
+                            // result.extname
+                            // result.uuid
+                            // result.type
+                            // result.isSubAsset
+                            // result.children - the array of children result
+                          });
+                        });
+             */
+            deepQuery(cb?: Function): void;
+
+            /**
+             * queryAssets
+             * @param pattern The url pattern.
+             * @param assetTypes The asset type(s).
+             * @param cb The callback function.
+             */
+            queryAssets(pattern: string, assetTypes: string | string[], cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * queryMetas
+             * @param pattern The url pattern.
+             * @param type The asset type.
+             * @param cb The callback function.
+             */
+            queryMetas(pattern: string, type: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * move
+             * @param srcUrl The url pattern.
+             * @param destUrl The asset type.
+             * @param cb The callback function.
+             */
+            move(srcUrl: string, destUrl: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * delete
+             * @param urls 
+             * @param cb 
+             */
+            delete(urls: string[], cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * Create asset at url with data.
+             * @param url 
+             * @param data 
+             * @param cb 
+             */
+            create(url: string, data: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * Save data to the exists asset at url.
+             * @param url 
+             * @param data 
+             * @param cb 
+             */
+            saveExists(url: string, data: string, cb?: (err: Error, meta: any) => void): void;
+
+            /**
+             * Import raw files to url
+             * @param rawfiles 
+             * @param url 
+             * @param cb 
+             */
+            import(rawfiles: string[], url: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * Overwrite the meta by loading it through uuid.
+             * @param uuid 
+             * @param jsonString 
+             * @param cb 
+             */
+            saveMeta(uuid: string, jsonString: string, cb?: (err: Error, meta: any) => void): void;
+
+            /**
+             * Exchange uuid for two assets.
+             * @param urlA 
+             * @param urlB 
+             * @param cb 
+             */
+            exchangeUuid(urlA: string, urlB: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * Clear imports.
+             * @param url 
+             * @param cb 
+             */
+            clearImports(url: string, cb?: (err: Error, results: any[]) => void): void;
+
+            /**
+             * Register meta type.
+             * @param extname 
+             * @param folder Whether it's a folder type.
+             * @param metaCtor 
+             */
+            register(extname: string, folder: boolean, metaCtor: object): void;
+
+            /**
+             * Unregister meta type.
+             * @param metaCtor 
+             */
+            unregister(metaCtor: object): void;
+
+            /**
+             * Get the relative path from mount path to the asset by fspath.
+             * @param fspath  
+             */
+            getRelativePath(fspath: string): string;
+
+            /**
+             * Get the backup file path of asset file.
+             * @param filePath 
+             */
+            getAssetBackupPath(filePath: string): string;
+
         }
-        export namespace Windows {
-            export function open(layout: Editor.Layout.ILayout, rect: { x: number, y: number, width: number, height: number}): void;
+
+    }
+
+    interface MetaBase {
+        ver: string;
+        uuid: string;
+    }
+
+    interface MountInfo {
+        path: string;
+        name: string;
+        type: string;
+    }
+
+    interface Metas {
+        asset: string[];
+        folder: string[];
+        mount: string[];
+        'custom-asset': string[];
+        'native-asset': string[];
+        'animation-clip': string[];
+        'audio-clip': string[];
+        'bitmap-font': string[];
+    }
+
+    interface App {
+        readonly home: string;
+        readonly name: string;
+        readonly path: string;
+        readonly version: string;
+    }
+
+    class Remote {
+        readonly App: App;
+        readonly isClosing: boolean;
+        readonly lang: string;
+        readonly isNode: boolean;
+        readonly isElectron: boolean;
+        readonly isNative: boolean;
+        readonly isPureWeb: boolean;
+        readonly isRendererProcess: boolean;
+        readonly isMainProcess: boolean;
+        readonly isDarwin: boolean;
+        readonly isWin32: boolean;
+        readonly isRetina: boolean;
+        readonly frameworkPath: string;
+        readonly dev: boolean;
+        readonly logfile: string;
+        readonly themePaths: string[];
+        readonly theme: string;
+        readonly showInternalMount: boolean;
+        readonly metas: Metas;
+        readonly metaBackupPath: string;
+        readonly assetBackupPath: string;
+        readonly libraryPath: string;
+        readonly importPath: string;
+        readonly externalMounts: any;
+        readonly mountsWritable: string;
+        readonly assetdb: MainProcess.AssetDB;
+        readonly assetdbInited: boolean;
+        readonly sceneList: string[];
+        readonly versions: {
+            'asset-db': string;
+            CocosCreator: string;
+            cocos2d: string;
+            'editor-framework': string;
         }
     }
+
+    /** Remote 实例 */
+    const remote: Remote;
+
+    /** AssetDB 实例 */
+    const assetdb: MainProcess.AssetDB;
+
+}
+
+interface AssetInfo {
+    uuid?: string;
+    path?: string;
+    url?: string;
+    type?: string;
+    isSubAsset?: boolean;
+    assetType?: string;
+    id?: string;
+    name?: string;
+    subAssetTypes?: string;
+}
+
+declare module Editor.Project {
+    readonly let id: string;
+    readonly let name: string;
+    /** Absolute path for current open project. */
+    readonly let path: string;
+}
+
+declare module Editor.Builder {
+
+    /**
+     * 
+     * @param eventName The name of the event
+     * @param callback The event callback
+     */
+    function on(eventName: string, callback: (options: BuildOptions, cb: Function) => void): void;
+
+    /**
+     * 
+     * @param eventName The name of the event
+     * @param callback The event callback
+     */
+    function once(eventName: string, callback: (options: BuildOptions, cb: Function) => void): void;
+
+    /**
+     * 
+     * @param eventName The name of the event
+     * @param callback The event callback
+     */
+    function removeListener(eventName: string, callback: Function): void;
+
+}
+
+declare module Editor.Scene {
+
+    /**
+     * 
+     * @param packageName 
+     * @param method 
+     * @param cb 
+     */
+    function callSceneScript(packageName: string, method: string, cb: (err: Error, msg: any) => void): void;
+
+}
+
+declare module Editor.Panel {
+
+    /**
+     * Open a panel via panelID.
+     * @param panelID The panel ID
+     * @param argv 
+     */
+    function open(panelID: string, argv?: object): void;
+
+    /**
+     * Close a panel via panelID.
+     * @param panelID The panel ID
+     */
+    function close(panelID: string): void;
+
+    /**
+     * Find panel frame via panelID.
+     * @param panelID The panel ID
+     */
+    function find(panelID: string): void;
+
+    /**
+     * Extends a panel.
+     * @param proto 
+     */
+    function extend(proto: object): void;
+
+}
+
+declare module Editor.Selection {
+
+    /**
+     * Select item with its id.
+     * @param type 
+     * @param id 
+     * @param unselectOthers 
+     * @param confirm 
+     */
+    function select(type: string, id: string, unselectOthers?: boolean, confirm?: boolean): void;
+
+    /**
+     * Unselect item with its id.
+     * @param type 
+     * @param id 
+     * @param confirm 
+     */
+    function unselect(type: string, id: string, confirm?: boolean): void;
+
+    /**
+     * Hover item with its id. If id is null, it means hover out.
+     * @param type 
+     * @param id 
+     */
+    function hover(type: string, id: string): string;
+
+    /**
+     * 
+     * @param type 
+     */
+    function clear(type: string): void;
+
+    /**
+     * 
+     * @param type 
+     */
+    function curActivate(type: string): string[];
+
+    /**
+     * 
+     * @param type 
+     */
+    function curGlobalActivate(type: string): string[];
+
+    /**
+     * 
+     * @param type 
+     */
+    function curSelection(type: string): string[];
+
+    /**
+     * 
+     * @param items 
+     * @param mode 'top-level', 'deep' and 'name'
+     * @param func 
+     */
+    function filter(items: string[], mode: string, func: Function): string[];
+
+}
+
+declare module Editor.Ipc {
+
+    /**
+     * Send message with ...args to main process asynchronously. It is possible to add a callback as the last or the 2nd last argument to receive replies from the IPC receiver.
+     * @param message Ipc message.
+     * @param args Whatever arguments the message needs.
+     * @param callback You can specify a callback function to receive IPC reply at the last or the 2nd last argument.
+     * @param timeout You can specify a timeout for the callback at the last argument. If no timeout specified, it will be 5000ms.
+     */
+    function sendToMain(message: string, ...args?: any, callback?: Function, timeout?: number): void;
+
+    /**
+     * Send message with ...args to panel defined in renderer process asynchronously. It is possible to add a callback as the last or the 2nd last argument to receive replies from the IPC receiver.
+     * @param panelID Panel ID.
+     * @param message Ipc message.
+     * @param args Whatever arguments the message needs.
+     * @param callback You can specify a callback function to receive IPC reply at the last or the 2nd last argument.
+     * @param timeout You can specify a timeout for the callback at the last argument. If no timeout specified, it will be 5000ms.
+     */
+    function sendToPanel(panelID: string, message: string, ...args?: any, callback?: Function, timeout?: number): void;
+
+    /**
+     * Send message with ...args to all opened window and to main process asynchronously.
+     * @param message Ipc message.
+     * @param args Whatever arguments the message needs.
+     * @param option You can indicate the last argument as an IPC option by Editor.Ipc.option({...}).
+     */
+    function sendToAll(message: string, ...args?: any, option?: object): void;
+
+    /**
+     * Send message with ...args to main process synchronized and return a result which is responded from main process.
+     * @param message Ipc message.
+     * @param args Whatever arguments the message needs.
+     */
+    function sendToMainSync(message: string, ...args?: any): void;
+
+    /**
+     * Send message with ...args to main process by package name and the short name of the message.
+     * @param pkgName Package name.
+     * @param message Ipc message.
+     * @param args Whatever arguments the message needs.
+     */
+    function sendToPackage(pkgName: string, message: string, ...args?: any): void;
+
+}
+
+declare module Editor.UI {
+
+    module Setting {
+
+        /**
+         * Control the default step for float point input element. Default is 0.1.
+         * @param value 
+         */
+        function stepFloat(value: number): void;
+
+        /**
+         * Control the default step for integer input element. Default is 1.
+         * @param value 
+         */
+        function stepInt(value: number): void;
+
+        /**
+         * Control the step when shift key press down. Default is 10.
+         * @param value 
+         */
+        function shiftStep(value: number): void;
+
+    }
+
+    module DragDrop {
+
+        readonly let dragging: boolean;
+
+        function start(e: any, t: any): void;
+
+        function end(): void;
+
+        function updateDropEffect(e: any, t: any);
+
+        function type(e: any);
+
+        function filterFiles(e: any);
+
+        function items(dataTransfer: DataTransfer): AssetInfo[];
+
+        function getDragIcon(e: any);
+
+        function options(e: any);
+
+        function getLength(e: any): number;
+
+    }
+
+}
+
+declare module Editor.GizmosUtils {
+
+    function addMoveHandles(e, n, t);
+
+    function getCenter(e);
+
+    function getCenterWorldPos(n);
+
+    function getCenterWorldPos3D(e);
+
+    function getRecursiveNodes(e, t);
+
+    function getRecursiveWorldBounds3D(e);
+
+    function getWorldBounds3D(n);
+
+    function snapPixel(e);
+
+    function snapPixelWihVec2(e);
+
+}
+
+declare module Editor.Utils {
+
+    /**
+     * Uuid 工具
+     */
+    module UuidUtils {
+
+        /**
+         * 压缩后的 uuid 可以减小保存时的尺寸，但不能做为文件名（因为无法区分大小写并且包含非法字符）。
+         * 默认将 uuid 的后面 27 位压缩成 18 位，前 5 位保留下来，方便调试。
+         * 如果启用 min 则将 uuid 的后面 30 位压缩成 20 位，前 2 位保留不变。
+         * @param uuid 
+         * @param min 
+         */
+        function compressUuid(uuid: string, min?: boolean): string;
+
+        function compressHex(hexString: string, reservedHeadLength?: number): string;
+
+        function decompressUuid(str: string): string;
+
+        function isUuid(str: string): boolean;
+
+        function uuid(): string;
+
+    }
+
+}
+
+declare interface BuildOptions {
+    actualPlatform: string;
+    android: { packageName: string };
+    'android-instant': {
+        REMOTE_SERVER_ROOT: string;
+        host: string;
+        packageName: string;
+        pathPattern: string;
+        recordPath: string;
+        scheme: string;
+        skipRecord: boolean;
+    }
+    apiLevel: string;
+    appABIs: string[];
+    appBundle: boolean;
+    buildPath: string;
+    buildScriptsOnly: boolean;
+    debug: string;
+    dest: string;
+    embedWebDebugger: boolean;
+    encryptJs: boolean;
+    excludeScenes: string[];
+    excludedModules: string[];
+    'fb-instant-games': object;
+    inlineSpriteFrames: boolean;
+    inlineSpriteFrames_native: boolean;
+    ios: { packageName: string };
+    mac: { packageName: string };
+    md5Cache: boolean;
+    mergeStartScene: boolean;
+    optimizeHotUpdate: boolean;
+    orientation: {
+        landscapeLeft: boolean;
+        landscapeRight: boolean;
+        portrait: boolean;
+        upsideDown: boolean;
+    };
+    packageName: string;
+    platform: string;
+    previewHeight: number;
+    previewWidth: number;
+    scenes: string[];
+    sourceMaps: boolean;
+    startScene: string;
+    template: string;
+    title: string;
+    useDebugKeystore: boolean;
+    vsVersion: string;
+    webOrientation: boolean;
+    win32: object;
+    xxteaKey: string;
+    zipCompressJs: string;
+    project: string;
+    projectName: string;
+    debugBuildWorker: boolean;
+    bundles: bundle[];
+}
+
+interface bundle {
+    /** bundle 的根目录 */
+    root: string;
+    /** bundle 的输出目录 */
+    dest: string;
+    /** 脚本的输出目录 */
+    scriptDest: string;
+    /** bundle 的名称 */
+    name: string;
+    /** bundle 的优先级 */
+    priority: number;
+    /** bundle 中包含的场景 */
+    scenes: string[];
+    /** bundle 的压缩类型 */
+    compressionType: 'subpackage' | 'normal' | 'none' | 'merge_all_json' | 'zip';
+    /** bundle 所构建出来的所有资源 */
+    buildResults: BuildResults;
+    /** bundle 的版本信息，由 config 生成 */
+    version: string;
+    /** bundle 的 config.json 文件 */
+    config: any;
+    /** bundle 是否是远程包 */
+    isRemote: boolean;
 }
